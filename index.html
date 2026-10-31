@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>나고야 3박 4일 여행 가이드 | 12.26 - 12.29</title>
+  <meta name="description" content="성인 4인을 위한 피로 최소화 나고야 3박 4일 명소, 온천, 쇼핑, 미식 여행 계획서">
+  <link rel="stylesheet" href="styles.css">
+  <!-- 폰트 및 아이콘 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <!-- 상단 헤더 -->
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="header-brand">
+        <span class="badge-tag">성인 4인 가족 여행</span>
+        <h1>나고야 여행 가이드 <span>Nagoya Travel Guide</span></h1>
+        <p class="trip-date">2026.12.26(토) ~ 12.29(화) · 3박 4일</p>
+      </div>
+      <div class="header-actions">
+        <button id="font-size-btn" class="icon-btn" title="큰 글씨 모드 전환">
+          <span class="btn-icon">🔍</span>
+          <span class="btn-text">큰 글씨</span>
+        </button>
+        <button id="theme-btn" class="icon-btn" title="다크 모드 전환">
+          <span class="btn-icon">🌙</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- 터미널 주의 경고 배너 -->
+    <div class="terminal-alert-bar">
+      <div class="alert-icon">⚠️</div>
+      <div class="alert-content">
+        <strong>[필독] 공항 터미널 상이 주의!</strong>
+        <span>출국: 인천 <b>T1</b> ➔ 나고야 <b>T2</b> | 귀국: 나고야 <b>T1</b> ➔ 인천 <b>T2</b></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- 메인 컨테이너 -->
+  <main class="main-container">
+
+    <!-- [탭 1] 홈 / 바우처 (tab-home) -->
+    <section id="tab-home" class="tab-content active">
+      <!-- 여행 요약 카드 -->
+      <div class="summary-hero-card">
+        <div class="hero-header">
+          <h2>여행 핵심 요약 대시보드</h2>
+          <span class="badge-status">예약 완료</span>
+        </div>
+        <div class="hero-grid">
+          <div class="hero-item">
+            <span class="item-label">여행 인원</span>
+            <span class="item-val">성인 4명</span>
+            <span class="item-sub">김한희, 김건희, 김경옥, 김상호</span>
+          </div>
+          <div class="hero-item">
+            <span class="item-label">숙소 (3박 연박)</span>
+            <span class="item-val">APA 나고야 에키마에 미나미</span>
+            <span class="item-sub">나고야역 태합통구 도보 5분 · 트윈룸 2실</span>
+          </div>
+          <div class="hero-item">
+            <span class="item-label">여행 컨셉</span>
+            <span class="item-val">피로 최소화 힐링</span>
+            <span class="item-sub">명소 · 천연온천 · 쇼핑 · 나고야 미식</span>
+          </div>
+          <div class="hero-item">
+            <span class="item-label">핵심 이동 전략</span>
+            <span class="item-val">4인 택시 & 뮤스카이</span>
+            <span class="item-sub">단거리 택시 분할로 도보 피로 50% 절감</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 항공권 바우처 카드 -->
+      <div class="section-card">
+        <div class="card-header">
+          <h3>✈️ 항공권 예약 정보</h3>
+          <span class="badge-blue">직항편</span>
+        </div>
+        <div class="flight-cards-container">
+          <!-- 출국편 -->
+          <div class="flight-card outbound">
+            <div class="flight-tag">가는 편 (제주항공 7C 1201)</div>
+            <div class="flight-date">2026년 12월 26일 (토) · 비행 1시간 45분</div>
+            <div class="flight-route">
+              <div class="route-point">
+                <span class="airport-code">ICN</span>
+                <span class="airport-name">인천공항 제1터미널(T1)</span>
+                <span class="flight-time">09:10</span>
+              </div>
+              <div class="route-arrow">
+                <span class="arrow-icon">✈️</span>
+                <span class="baggage-badge">위탁 15kg</span>
+              </div>
+              <div class="route-point">
+                <span class="airport-code">NGO</span>
+                <span class="airport-name">센트레아 제2터미널(T2)</span>
+                <span class="flight-time">10:55</span>
+              </div>
+            </div>
+            <div class="voucher-info-bar">
+              <span>예약번호: <b>NYBIUF</b></span>
+              <span>티켓번호: <b>8069016929113</b></span>
+              <button class="btn-subtle" onclick="openImageModal('일본 항공권_김한희 1.png', '제주항공 출국권 바우처 (12/26)')">원본
+                보기</button>
+            </div>
+          </div>
+
+          <!-- 귀국편 -->
+          <div class="flight-card inbound">
+            <div class="flight-tag">오는 편 (진에어 LJ 0294)</div>
+            <div class="flight-date">2026년 12월 29일 (화) · 비행 2시간 25분</div>
+            <div class="flight-route">
+              <div class="route-point">
+                <span class="airport-code">NGO</span>
+                <span class="airport-name">센트레아 제1터미널(T1)</span>
+                <span class="flight-time">18:30</span>
+              </div>
+              <div class="route-arrow">
+                <span class="arrow-icon">✈️</span>
+                <span class="baggage-badge">위탁 15kg</span>
+              </div>
+              <div class="route-point">
+                <span class="airport-code">ICN</span>
+                <span class="airport-name">인천공항 제2터미널(T2)</span>
+                <span class="flight-time">20:55</span>
+              </div>
+            </div>
+            <div class="voucher-info-bar">
+              <span>예약번호: <b>QP6T38</b></span>
+              <span>티켓번호: <b>7183925808464</b></span>
+              <button class="btn-subtle" onclick="openImageModal('일본 항공권_김한희 2.png', '진에어 귀국권 바우처 (12/29)')">원본
+                보기</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 숙소 바우처 카드 -->
+      <div class="section-card">
+        <div class="card-header">
+          <h3>🏨 숙소 예약 정보</h3>
+          <span class="badge-green">결제 완료 (1,857,826원)</span>
+        </div>
+        <div class="hotel-detail-box">
+          <div class="hotel-title-group">
+            <div class="hotel-name-kr">APA 호텔 나고야 에키마에 미나미</div>
+            <div class="hotel-name-jp">アパホテル〈名古屋駅前南〉</div>
+            <div class="hotel-name-en">APA Hotel Nagoya Ekimae Minami</div>
+          </div>
+          <div class="hotel-meta-grid">
+            <div class="meta-item">
+              <span class="label">체크인</span>
+              <span class="val">12월 26일(토) 15:00 이후</span>
+            </div>
+            <div class="meta-item">
+              <span class="label">체크아웃</span>
+              <span class="val">12월 29일(화) 10:00 이전</span>
+            </div>
+            <div class="meta-item">
+              <span class="label">객실 구성</span>
+              <span class="val">금연 트윈룸 × 2객실 (싱글침대 4개)</span>
+            </div>
+            <div class="meta-item">
+              <span class="label">투숙 인원</span>
+              <span class="val">성인 4명 (식사 불포함)</span>
+            </div>
+            <div class="meta-item col-span-2">
+              <span class="label">호텔 주소</span>
+              <span class="val font-mono" id="hotel-addr-text">22-10 Tsubakichō, Nakamura-ku, Nagoya, Aichi 453-0015
+                (愛知県名古屋市中村区椿町22-10)</span>
+            </div>
+            <div class="meta-item">
+              <span class="label">트립닷컴 확인번호</span>
+              <span class="val font-mono" id="hotel-confirm-no">1400830242984586 (PIN: 8931)</span>
+            </div>
+            <div class="meta-item">
+              <span class="label">호텔 전화번호</span>
+              <a href="tel:+81524595611" class="val link-phone">+81-524595611 📞</a>
+            </div>
+          </div>
+          <div class="hotel-action-buttons">
+            <button class="btn-audio" onclick="speakJapanese('運転手さん、アパホテル名古屋駅前南までお願いします。', this)">
+              <span class="audio-icon">🔊</span> 기사님께 들려주기
+            </button>
+            <button class="btn-primary" onclick="copyText('愛知県名古屋市中村区椿町22-10', '호텔 일본어 주소가 복사되었습니다!')">일본어 주소
+              복사</button>
+            <button class="btn-primary" onclick="copyText('1400830242984586', '확인번호가 복사되었습니다!')">확인번호 복사</button>
+            <a href="https://maps.google.com/?q=APA+Hotel+Nagoya+Ekimae+Minami" target="_blank" rel="noopener"
+              class="btn-outline">구글맵 위치 보기 🗺️</a>
+            <button class="btn-subtle" onclick="openImageModal('일본 숙박.jpg', 'APA 호텔 나고야 에키마에 미나미 숙박 바우처')">원본 바우처
+              보기</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 피로 최소화 여행 꿀팁 요약 카드 -->
+      <div class="section-card tips-card">
+        <div class="card-header">
+          <h3>💡 여행 경험자 피로 최소화 5계명</h3>
+        </div>
+        <ul class="tips-list">
+          <li><b>연말 휴관 주의:</b> 12월 29일(화)은 나고야성과 메구루 버스가 휴관하므로 <b>나고야성은 27일(일)에 방문</b>합니다.</li>
+          <li><b>4인 단거리 이동은 무조건 택시:</b> 나고야역 ↔ 나고야성·사카에 택시비는 ¥1,200~1,600선(인당 ¥300~400)으로 지하철 환승 계단을 100% 생략합니다.</li>
+          <li><b>나고야성은 '혼마루 어전' 집중:</b> 오르막 계단이 많은 천수각 대신 평지의 황금 목조 궁전 '혼마루 어전'에 집중하여 다리 피로를 아낍니다.</li>
+          <li><b>웨이팅 0분 공략법:</b> 아츠타 호라이켄(장어덮밥)은 오전 진구마에 도착 직후 <b>현장 번호표 선접수 후 신궁 산책</b>을 진행하여 줄 서지 않고 식사합니다.</li>
+          <li><b>쇼핑 짐 즉시 호텔 보관:</b> 나고야역 태합통구 도보 5분 숙소 입지를 살려, 무거운 쇼핑백은 호텔 객실에 즉시 두고 가볍게 이동합니다.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- [탭 2] 4일 동선표 (tab-itinerary) -->
+    <section id="tab-itinerary" class="tab-content">
+      <!-- 일자 선택 탭 버튼 -->
+      <div class="day-tab-bar">
+        <button class="day-btn active" onclick="switchDay(1)">
+          <span class="day-num">Day 1</span>
+          <span class="day-info">12/26(토) 도착·사카에 야경</span>
+        </button>
+        <button class="day-btn" onclick="switchDay(2)">
+          <span class="day-num">Day 2</span>
+          <span class="day-info">12/27(일) 나고야성·온천</span>
+        </button>
+        <button class="day-btn" onclick="switchDay(3)">
+          <span class="day-num">Day 3</span>
+          <span class="day-info">12/28(월) 신궁·오스·힐링</span>
+        </button>
+        <button class="day-btn" onclick="switchDay(4)">
+          <span class="day-num">Day 4</span>
+          <span class="day-info">12/29(화) 쇼핑·공항스파·귀국</span>
+        </button>
+      </div>
+
+      <!-- Day 1 일정 컨텐츠 -->
+      <div id="day-content-1" class="day-content active">
+        <div class="day-header-badge">
+          <h4>Day 1: 12월 26일 (토) — 인천 출발 · 나고야 도착 · 숙소 휴식 및 사카에 야경</h4>
+          <p>비행 이동 피로를 감안해 나고야역 평지 점심과 체크인 후 1시간 충전 뒤 사카에로 이동합니다.</p>
+        </div>
+        <div class="timeline-container" id="timeline-day-1"></div>
+      </div>
+
+      <!-- Day 2 일정 컨텐츠 -->
+      <div id="day-content-2" class="day-content">
+        <div class="day-header-badge">
+          <h4>Day 2: 12월 27일 (일) — 나고야성(혼마루 어전) & 온천 힐링 + 쇼핑</h4>
+          <p>연말 휴관 전 나고야성을 여유롭게 관람하고, 오후에는 온천 코스를 취향에 맞춰 선택합니다.</p>
+        </div>
+
+        <!-- 온천 옵션 스위치 -->
+        <div class="onsen-option-switch">
+          <div class="switch-title">♨️ Day 2 오후 온천 & 쇼핑 코스 선택</div>
+          <div class="switch-buttons">
+            <button id="btn-option-a" class="opt-btn active" onclick="switchOnsenOption('A')">
+              <span class="opt-tag">피로 최저 추천</span>
+              <strong>A안. 도심 캐널 리조트 & JR 백화점</strong>
+              <span>무료 셔틀 15분 · 대형 리클라이너 스파</span>
+            </button>
+            <button id="btn-option-b" class="opt-btn" onclick="switchOnsenOption('B')">
+              <span class="opt-tag">대자연 노천탕</span>
+              <strong>B안. 나가시마 온천 & 아울렛 & 일루미</strong>
+              <span>직행버스 50분 · 17종 노천탕 · 나바나노사토</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="timeline-container" id="timeline-day-2"></div>
+      </div>
+
+      <!-- Day 3 일정 컨텐츠 -->
+      <div id="day-content-3" class="day-content">
+        <div class="day-header-badge">
+          <h4>Day 3: 12월 28일 (월) — 아츠타 신궁(천년 숲) · 오스 상점가 & 로컬 온천</h4>
+          <p>삼나무 숲길 산책과 원조 히츠마부시 무대기 식사, 활기찬 오스 상점가와 빅카메라 쇼핑 코스입니다.</p>
+        </div>
+        <div class="timeline-container" id="timeline-day-3"></div>
+      </div>
+
+      <!-- Day 4 일정 컨텐츠 -->
+      <div id="day-content-4" class="day-content">
+        <div class="day-header-badge">
+          <h4>Day 4: 12월 29일 (화) — 여유로운 체크아웃 · 선물 쇼핑 · 공항 전망스파 & 귀국</h4>
+          <p>시내 주요 시설 연말 휴관을 피해 백화점 지하 식품관 쇼핑 후 센트레아 T1 전망 온천을 즐깁니다.</p>
+        </div>
+        <div class="timeline-container" id="timeline-day-4"></div>
+      </div>
+    </section>
+
+    <!-- [탭 3] 택시·길찾기 (tab-taxi) -->
+    <section id="tab-taxi" class="tab-content">
+      <div class="section-card">
+        <div class="card-header">
+          <h3>🚕 기사님께 보여주는 일본어 목적지 카드</h3>
+          <span class="badge-tag">성인 4인 맞춤</span>
+        </div>
+        <p class="section-desc">일본 택시 탑승 후 기사님께 화면을 그대로 보여주시면 언어 소통 없이 안전하게 이동할 수 있습니다. <b>(기본 요금 약 ¥500 / 시내 편도
+            ¥1,200~1,800선)</b></p>
+
+        <div class="taxi-cards-grid" id="taxi-cards-list">
+          <!-- JS로 동적 생성 -->
+        </div>
+      </div>
+    </section>
+
+    <!-- [탭 4] 명소·온천·쇼핑 사전 (tab-places) -->
+    <section id="tab-places" class="tab-content">
+      <!-- 1. 목록 뷰 (places-list-view) -->
+      <div id="places-list-view">
+        <!-- 카테고리 필터 바 -->
+        <div class="filter-bar">
+          <button class="filter-btn active" onclick="filterPlaces('all')">전체보기</button>
+          <button class="filter-btn" onclick="filterPlaces('sightseeing')">🏯 명소</button>
+          <button class="filter-btn" onclick="filterPlaces('onsen')">♨️ 온천</button>
+          <button class="filter-btn" onclick="filterPlaces('shopping')">🛍️ 쇼핑</button>
+          <button class="filter-btn" onclick="filterPlaces('food')">🍱 미식(맛집)</button>
+        </div>
+
+        <!-- 안내 힌트 바 -->
+        <div class="places-guide-banner">
+          <span class="banner-icon">💡</span>
+          <span>원하시는 방문지 카드를 <b>터치하시면 사진 갤러리와 주요 관광 포인트</b>를 상세히 확인하실 수 있습니다.</span>
+        </div>
+
+        <!-- 장소 카드 그리드 -->
+        <div class="places-grid" id="places-grid-container">
+          <!-- JS로 동적 렌더링 -->
+        </div>
+      </div>
+
+      <!-- 2. 상세 페이지 뷰 (places-detail-view) -->
+      <div id="places-detail-view" style="display: none;">
+        <!-- 상단 고정 뒤로가기 내비게이션 바 -->
+        <div class="detail-nav-bar">
+          <button class="btn-back" onclick="closePlaceDetail()">
+            <span class="back-arrow">‹</span> <b>목록으로</b>
+          </button>
+          <span class="detail-nav-title" id="detail-nav-title-text">방문지 상세 안내</span>
+          <button class="btn-icon" onclick="window.scrollTo({top:0, behavior:'smooth'})" title="맨 위로">⬆️</button>
+        </div>
+
+        <!-- 상세 컨텐츠 컨테이너 -->
+        <div id="place-detail-content" class="detail-content-wrap">
+          <!-- JS로 동적 렌더링 -->
+        </div>
+      </div>
+    </section>
+
+    <!-- [탭 5] 경비·체크리스트 (tab-budget) -->
+    <section id="tab-budget" class="tab-content">
+      <!-- 실시간 환율 계산기 -->
+      <div class="section-card">
+        <div class="card-header">
+          <h3>💴 실시간 엔화(¥) ↔ 원화(₩) 환율 계산기</h3>
+        </div>
+        <div class="exchange-calculator">
+          <div class="calc-row">
+            <label for="rate-input">적용 환율 (100엔당):</label>
+            <div class="input-unit-wrap">
+              <input type="number" id="rate-input" value="900" step="10" oninput="calculateExchange()">
+              <span>원</span>
+            </div>
+          </div>
+          <div class="calc-row">
+            <label for="yen-input">엔화 금액:</label>
+            <div class="input-unit-wrap">
+              <input type="number" id="yen-input" value="10000" step="100" oninput="calculateFromYen()">
+              <span>円 (¥)</span>
+            </div>
+          </div>
+          <div class="calc-result-box">
+            <span class="calc-label">성인 4인 기준 환산 금액</span>
+            <div class="calc-val-wrap">
+              <span class="won-val" id="calc-won-result">90,000 원</span>
+              <span class="won-per-person" id="calc-won-per-person">(1인당 약 22,500원)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4인 전체 여행 경비 결산표 -->
+      <div class="section-card">
+        <div class="card-header">
+          <h3>📊 성인 4인 예상 경비 총람</h3>
+          <span class="badge-green">사전 결제 포함</span>
+        </div>
+        <div class="budget-table-responsive">
+          <table class="budget-table">
+            <thead>
+              <tr>
+                <th>구분</th>
+                <th>항목</th>
+                <th>1인 기준</th>
+                <th>성인 4인 합계</th>
+                <th>비고</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="highlight-row">
+                <td>사전결제</td>
+                <td>APA 호텔 (3박 × 2객실)</td>
+                <td>464,456원</td>
+                <td><b>1,857,826원</b></td>
+                <td>트립닷컴 결제완료</td>
+              </tr>
+              <tr>
+                <td>공항교통</td>
+                <td>뮤스카이 특급 왕복</td>
+                <td>¥2,860 (약 25,740원)</td>
+                <td><b>¥11,440 (약 102,960원)</b></td>
+                <td>지정석 티켓 포함</td>
+              </tr>
+              <tr>
+                <td>시내교통</td>
+                <td>4인 택시 6회 + 전철/버스</td>
+                <td>약 ¥3,500 (약 31,500원)</td>
+                <td><b>약 ¥14,000 (약 126,000원)</b></td>
+                <td>단거리 택시 분할</td>
+              </tr>
+              <tr>
+                <td>입장·온천</td>
+                <td>나고야성 + 온천 2회 + 일루미</td>
+                <td>약 ¥5,000 (약 45,000원)</td>
+                <td><b>약 ¥20,000 (약 180,000원)</b></td>
+                <td>수건·가운 포함</td>
+              </tr>
+              <tr>
+                <td>식비(4일)</td>
+                <td>조식3 + 중식4 + 석식3 + 간식</td>
+                <td>약 ¥25,000 (약 225,000원)</td>
+                <td><b>약 ¥100,000 (약 900,000원)</b></td>
+                <td>장어덮밥/야키니쿠 포함</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr class="total-row">
+                <td colspan="2">현지 예상 체류비 합계</td>
+                <td>약 ¥36,360 (약 32.7만원)</td>
+                <td colspan="2"><b>약 ¥145,440 (약 130.9만원)</b></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+
+      <!-- 인터랙티브 스마트 체크리스트 -->
+      <div class="section-card">
+        <div class="card-header">
+          <h3>✅ 나고야 여행 준비물 & 쇼핑 체크리스트</h3>
+          <span class="badge-tag">자동 저장</span>
+        </div>
+        <p class="section-desc">체크한 항목은 스마트폰에 자동 저장되어 이동 중에도 확인하실 수 있습니다.</p>
+        <div class="checklist-container" id="checklist-box">
+          <!-- JS 렌더링 -->
+        </div>
+      </div>
+
+      <!-- 비상 연락망 및 지원 정보 -->
+      <div class="section-card emergency-card">
+        <div class="card-header">
+          <h3>🚨 현지 긴급 연락처</h3>
+        </div>
+        <div class="emergency-grid">
+          <div class="em-item">
+            <span class="em-title">주나고야 대한민국 총영사관</span>
+            <span class="em-phone">+81-52-584-1240</span>
+            <span class="em-sub">당직 긴급: +81-80-4221-9500</span>
+          </div>
+          <div class="em-item">
+            <span class="em-title">외교부 영사콜센터 (24시간)</span>
+            <span class="em-phone">+82-2-3210-0404</span>
+            <span class="em-sub">카카오톡 '영사콜센터' 상담 가능</span>
+          </div>
+          <div class="em-item">
+            <span class="em-title">일본 응급/구급차 (119) & 경찰 (110)</span>
+            <span class="em-phone">국번없이 119 / 110</span>
+            <span class="em-sub">한국어 통역 서비스 연결 요청 가능</span>
+          </div>
+          <div class="em-item">
+            <span class="em-title">APA 호텔 프런트 데스크</span>
+            <span class="em-phone">+81-52-459-5611</span>
+            <span class="em-sub">24시간 프런트 운영</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 하단 고정 탭 내비게이션 바 (Mobile Bottom Tab Bar) -->
+  <nav class="bottom-nav">
+    <button class="nav-item active" onclick="switchTab('tab-home')">
+      <span class="nav-icon">📌</span>
+      <span class="nav-label">홈·바우처</span>
+    </button>
+    <button class="nav-item" onclick="switchTab('tab-itinerary')">
+      <span class="nav-icon">🗓️</span>
+      <span class="nav-label">4일 동선</span>
+    </button>
+    <button class="nav-item" onclick="switchTab('tab-taxi')">
+      <span class="nav-icon">🚕</span>
+      <span class="nav-label">택시 카드</span>
+    </button>
+    <button class="nav-item" onclick="switchTab('tab-places')">
+      <span class="nav-icon">♨️</span>
+      <span class="nav-label">명소·온천</span>
+    </button>
+    <button class="nav-item" onclick="switchTab('tab-budget')">
+      <span class="nav-icon">💴</span>
+      <span class="nav-label">경비·체크</span>
+    </button>
+  </nav>
+
+  <!-- 원본 바우처 이미지 모달 팝업 -->
+  <div id="image-modal" class="modal-overlay" onclick="closeImageModal()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h4 id="modal-title">원본 바우처 이미지</h4>
+        <button class="modal-close-btn" onclick="closeImageModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <img id="modal-img" src="" alt="바우처 원본">
+      </div>
+      <div class="modal-footer">
+        <span class="modal-tip">💡 손가락 두 개로 핀치 줌하여 확대 확인하실 수 있습니다.</span>
+        <button class="btn-subtle" onclick="closeImageModal()">닫기</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 토스트 알림 팝업 -->
+  <div id="toast" class="toast">알림 메시지</div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
