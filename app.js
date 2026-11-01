@@ -428,6 +428,7 @@ const itineraryData = {
 // 1.2 택시 기사님용 일본어 카드 데이터
 const taxiCardsData = [
   {
+    id: "hotel",
     spotKr: "APA 호텔 나고야 에키마에 미나미 (숙소 복귀)",
     spotJp: "アパホテル〈名古屋駅前南〉",
     spotKana: "アパホテル なごやえきまえみなみ",
@@ -439,6 +440,7 @@ const taxiCardsData = [
     mapUrl: "https://maps.google.com/?q=APA+Hotel+Nagoya+Ekimae+Minami"
   },
   {
+    id: "nagoya-castle",
     spotKr: "나고야성 정문 (혼마루 어전 바로 앞)",
     spotJp: "名古屋城 正門（本丸御殿）",
     spotKana: "なごやじょう せいもん",
@@ -450,6 +452,7 @@ const taxiCardsData = [
     mapUrl: "https://maps.google.com/?q=Nagoya+Castle+Main+Gate"
   },
   {
+    id: "oasis21",
     spotKr: "사카에 오아시스 21 (물의 우주선)",
     spotJp: "栄 オアシス21",
     spotKana: "さかえ オアシスにじゅういち",
@@ -461,6 +464,7 @@ const taxiCardsData = [
     mapUrl: "https://maps.google.com/?q=Oasis+21+Nagoya"
   },
   {
+    id: "noritake",
     spotKr: "노리타케의 숲 & 이온몰",
     spotJp: "ノリタケの森（イオンモール則武新町）",
     spotKana: "ノリタケのもり",
@@ -472,6 +476,7 @@ const taxiCardsData = [
     mapUrl: "https://maps.google.com/?q=Noritake+Garden+Nagoya"
   },
   {
+    id: "osu-kannon",
     spotKr: "오스 관음 (오스 상점가 입구)",
     spotJp: "大須観音（大須商店街）",
     spotKana: "おおすかんのん",
@@ -483,6 +488,7 @@ const taxiCardsData = [
     mapUrl: "https://maps.google.com/?q=Osu+Kannon+Nagoya"
   },
   {
+    id: "atsuta-jingu",
     spotKr: "아츠타 신궁 동문 (호라이켄 앞)",
     spotJp: "熱田神宮 東門（神宮前駅側）",
     spotKana: "あつたじんぐう ひがしもん",
@@ -494,6 +500,7 @@ const taxiCardsData = [
     mapUrl: "https://maps.google.com/?q=Atsuta+Jingu+Shrine+Nagoya"
   },
   {
+    id: "nagoya-station",
     spotKr: "JR 나고야역 태합통구 (신칸센 출구)",
     spotJp: "JR名古屋駅 太閤通口（新幹線口）",
     spotKana: "なごやえき たいこうどおりぐち",
@@ -505,6 +512,7 @@ const taxiCardsData = [
     mapUrl: "https://maps.google.com/?q=Nagoya+Station+Taiko-dori+Side"
   },
   {
+    id: "canal-resort",
     spotKr: "캐널 리조트 (천연온천 & 스파)",
     spotJp: "キャナルリゾート（天然温泉）",
     spotKana: "キャナルリゾート",
@@ -516,6 +524,7 @@ const taxiCardsData = [
     mapUrl: "https://maps.google.com/?q=Canal+Resort+Nagoya"
   },
   {
+    id: "yukichiro",
     spotKr: "타이코 천연온천 유키치로 (쇼나이 강변 온천)",
     spotJp: "太閤天然温泉 湯吉郎",
     spotKana: "たいこうてんねんおんせん とうきちろう",
@@ -1048,6 +1057,13 @@ function switchTab(tabId) {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
+  // 택시 탭이 아닐 때는 택시 복귀 배너 정리
+  if (tabId !== 'tab-taxi') {
+    const banner = document.getElementById('taxi-return-banner');
+    if (banner) banner.style.display = 'none';
+    document.querySelectorAll('.btn-taxi-return').forEach(btn => btn.style.display = 'none');
+  }
+
   // 내비게이션 바 하이라이트
   const activeBtn = Array.from(document.querySelectorAll(".nav-item")).find(btn =>
     btn.getAttribute("onclick")?.includes(tabId)
@@ -1133,12 +1149,38 @@ function renderTimeline(containerId, steps) {
             </button>
           ` : ''}
           ${s.mapQuery ? `<a href="https://maps.google.com/?q=${encodeURIComponent(s.mapQuery)}" target="_blank" rel="noopener" class="btn-subtle">구글맵 위치 📍</a>` : ''}
-          <button class="btn-subtle" onclick="switchTab('tab-taxi')">택시 카드 보기 🚕</button>
+          <button class="btn-subtle btn-taxi-link" onclick="goToTaxiCardFromTimeline('${resolveTaxiId(s)}', '${stepId}', ${dayNum})" title="이 일정에 맞는 일본어 택시 목적지 카드로 이동">
+            택시 카드 보기 🚕
+          </button>
         </div>
       </div>
     </div>
   `;
   }).join('');
+}
+
+// 동선별 최적의 택시 카드 ID 자동 매핑 헬퍼
+function resolveTaxiId(step) {
+  if (step.taxiId) return step.taxiId;
+  if (step.placeId) {
+    if (step.placeId === 'nagoya-castle') return 'nagoya-castle';
+    if (step.placeId === 'oasis21') return 'oasis21';
+    if (step.placeId === 'atsuta-jingu' || step.placeId === 'atsuta-horaiken') return 'atsuta-jingu';
+    if (step.placeId === 'osu-shopping') return 'osu-kannon';
+    if (step.placeId === 'canal-resort') return 'canal-resort';
+    if (step.placeId === 'yukichiro') return 'yukichiro';
+    if (step.placeId === 'takashimaya-esca' || step.placeId === 'bic-camera') return 'nagoya-station';
+  }
+  const title = step.title || '';
+  if (title.includes('노리타케')) return 'noritake';
+  if (title.includes('신궁') || title.includes('호라이켄')) return 'atsuta-jingu';
+  if (title.includes('오스')) return 'osu-kannon';
+  if (title.includes('오아시스') || title.includes('사카에')) return 'oasis21';
+  if (title.includes('나고야성') || title.includes('혼마루')) return 'nagoya-castle';
+  if (title.includes('캐널')) return 'canal-resort';
+  if (title.includes('유키치로')) return 'yukichiro';
+  if (title.includes('나고야역') || title.includes('타카시마야') || title.includes('에스카')) return 'nagoya-station';
+  return 'hotel';
 }
 
 // 2.5 택시 목적지 카드 렌더링
@@ -1147,7 +1189,7 @@ function renderTaxiCards() {
   if (!container) return;
 
   container.innerHTML = taxiCardsData.map((c, idx) => `
-    <div class="taxi-card">
+    <div class="taxi-card" id="taxi-card-${c.id}">
       <div class="taxi-header">
         <span class="spot-kr">📍 ${c.spotKr}</span>
         <span class="fare-est">${c.fareEst}</span>
@@ -1171,10 +1213,95 @@ function renderTaxiCards() {
         </button>
         <button class="btn-subtle" onclick="copyText('${c.spotJp}', '일본어 목적지가 복사되었습니다!')">일본어 복사</button>
         <button class="btn-subtle" onclick="copyText('${c.spotAddr}', '주소가 복사되었습니다!')">주소 복사</button>
-        <a href="${c.mapUrl}" target="_blank" rel="noopener" class="btn-outline">지도 보기 🗺️</a>
+        <button class="btn-subtle btn-taxi-return" onclick="returnToTimelineFromTaxi()" style="display: none;" title="방금 보던 4일 동선 위치로 복귀">
+          ‹ 동선 복귀
+        </button>
+        <a href="${c.mapUrl}" target="_blank" rel="noopener" class="btn-outline">지도 🗺️</a>
       </div>
     </div>
   `).join('');
+}
+
+// ==========================================================================
+// 4일 동선 <-> 택시 카드 양방향 상세 이동 및 원래 위치 복귀 관리
+// ==========================================================================
+let taxiReturnContext = null;
+
+function goToTaxiCardFromTimeline(taxiId, stepId, dayNum) {
+  // 1. 복귀할 위치 정보 기록
+  taxiReturnContext = {
+    stepId: stepId,
+    dayNum: dayNum,
+    scrollPos: window.scrollY
+  };
+
+  // 2. 택시 탭으로 전환
+  switchTab('tab-taxi');
+
+  // 3. 상단 복귀 배너 노출
+  const banner = document.getElementById('taxi-return-banner');
+  const bannerText = document.getElementById('taxi-return-text');
+  if (banner) {
+    banner.style.display = 'flex';
+    if (bannerText) {
+      bannerText.textContent = `‹ Day ${dayNum} 일정으로 돌아가기 (방금 보던 위치)`;
+    }
+  }
+
+  // 각 카드 내부의 복귀 버튼도 활성화
+  document.querySelectorAll('.btn-taxi-return').forEach(btn => {
+    btn.style.display = 'inline-flex';
+    btn.textContent = `‹ Day ${dayNum} 복귀`;
+  });
+
+  // 4. 매칭되는 특정 택시 카드로 부드럽게 스크롤 & 펄스 하이라이트
+  setTimeout(() => {
+    const targetCard = document.getElementById(`taxi-card-${taxiId}`);
+    if (targetCard) {
+      targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      targetCard.classList.add('step-highlight-pulse');
+      setTimeout(() => {
+        targetCard.classList.remove('step-highlight-pulse');
+      }, 2200);
+    }
+  }, 120);
+
+  showToast(`🚕 Day ${dayNum} 동선에 매칭된 택시 카드로 이동했습니다.`);
+}
+
+function returnToTimelineFromTaxi() {
+  if (!taxiReturnContext) {
+    switchTab('tab-itinerary');
+    return;
+  }
+
+  const returnCtx = taxiReturnContext;
+  taxiReturnContext = null;
+
+  // 복귀 배너 및 버튼 숨김
+  const banner = document.getElementById('taxi-return-banner');
+  if (banner) banner.style.display = 'none';
+  document.querySelectorAll('.btn-taxi-return').forEach(btn => {
+    btn.style.display = 'none';
+  });
+
+  // 1. 4일 동선 탭으로 복귀
+  switchTab('tab-itinerary');
+
+  // 2. 해당 일차 활성화
+  switchDay(returnCtx.dayNum);
+
+  // 3. 원래 보던 동선 카드로 부드럽게 스크롤 & 펄스 하이라이트 애니메이션
+  setTimeout(() => {
+    const targetCard = document.getElementById(returnCtx.stepId);
+    if (targetCard) {
+      targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      targetCard.classList.add('step-highlight-pulse');
+      setTimeout(() => {
+        targetCard.classList.remove('step-highlight-pulse');
+      }, 2200);
+    }
+  }, 120);
 }
 
 // 2.5.1 Web Speech API 일본어 음성 합성 (TTS)

@@ -1169,6 +1169,76 @@ body.dark-mode .btn-back.timeline-return-mode {
 /* --------------------------------------------------------------------------
    [탭 3] 택시 카드 세부 스타일
    -------------------------------------------------------------------------- */
+/* 택시 탭 상단 동선 복귀 배너 */
+.taxi-return-banner {
+  background: linear-gradient(135deg, #ebf8ff, #bee3f8);
+  border: 1px solid #90cdf4;
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  box-shadow: 0 2px 6px rgba(49, 130, 206, 0.15);
+  animation: fadeIn 0.25s ease-out;
+}
+
+body.dark-mode .taxi-return-banner {
+  background: linear-gradient(135deg, #1a365d, #2b6cb0);
+  border-color: #3182ce;
+}
+
+.btn-taxi-top-return {
+  background: linear-gradient(135deg, #3182ce, #2b6cb0);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 9px 14px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.btn-taxi-top-return:hover {
+  background: linear-gradient(135deg, #2b6cb0, #2c5282);
+  transform: translateY(-1px);
+}
+
+.btn-taxi-top-return .return-arrow {
+  font-size: 1.1rem;
+}
+
+.taxi-return-banner .return-hint {
+  font-size: 0.76rem;
+  color: #2b6cb0;
+  text-align: center;
+  line-height: 1.35;
+}
+
+body.dark-mode .taxi-return-banner .return-hint {
+  color: #bee3f8;
+}
+
+/* 택시 카드 내부의 동선 복귀 버튼 */
+.btn-taxi-return {
+  background-color: #ebf8ff;
+  border-color: #90cdf4;
+  color: #2b6cb0;
+  font-weight: 700;
+}
+
+body.dark-mode .btn-taxi-return {
+  background-color: #1a365d;
+  border-color: #3182ce;
+  color: #bee3f8;
+}
+
 .taxi-cards-grid {
   display: flex;
   flex-direction: column;

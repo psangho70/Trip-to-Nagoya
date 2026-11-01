@@ -294,6 +294,14 @@
 
     <!-- [탭 3] 택시·길찾기 (tab-taxi) -->
     <section id="tab-taxi" class="tab-content">
+      <!-- 동선 복귀 상단 배너 (4일 동선에서 이동했을 때 노출) -->
+      <div id="taxi-return-banner" class="taxi-return-banner" style="display: none;">
+        <button class="btn-taxi-top-return" onclick="returnToTimelineFromTaxi()">
+          <span class="return-arrow">‹</span> <b id="taxi-return-text">4일 동선으로 돌아가기</b>
+        </button>
+        <span class="return-hint">💡 확인 후 누르시면 방금 보던 일정 위치로 즉시 복귀합니다.</span>
+      </div>
+
       <div class="section-card">
         <div class="card-header">
           <h3>🚕 기사님께 보여주는 일본어 목적지 카드</h3>
