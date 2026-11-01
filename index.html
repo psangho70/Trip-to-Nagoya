@@ -337,8 +337,8 @@
       <div id="places-detail-view" style="display: none;">
         <!-- 상단 고정 뒤로가기 내비게이션 바 -->
         <div class="detail-nav-bar">
-          <button class="btn-back" onclick="closePlaceDetail()">
-            <span class="back-arrow">‹</span> <b>목록으로</b>
+          <button class="btn-back" id="btn-detail-back" onclick="closePlaceDetail()">
+            <span class="back-arrow">‹</span> <b id="btn-detail-back-text">목록으로</b>
           </button>
           <span class="detail-nav-title" id="detail-nav-title-text">방문지 상세 안내</span>
           <button class="btn-icon" onclick="window.scrollTo({top:0, behavior:'smooth'})" title="맨 위로">⬆️</button>

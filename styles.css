@@ -886,6 +886,129 @@ body.dark-mode .day-header-badge {
   flex-wrap: wrap;
 }
 
+/* 타임라인 헤더 태그 및 상세 이동 뱃지 */
+.step-header-tags {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.step-spot-badge-btn {
+  background: linear-gradient(135deg, #ebf8ff, #bee3f8);
+  color: #2b6cb0;
+  border: 1px solid #90cdf4;
+  border-radius: 9999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.step-spot-badge-btn:hover {
+  background: #bee3f8;
+  transform: translateY(-1px);
+}
+
+.step-spot-badge-btn:active {
+  transform: scale(0.96);
+}
+
+body.dark-mode .step-spot-badge-btn {
+  background: #1a365d;
+  color: #90cdf4;
+  border-color: #2b6cb0;
+}
+
+/* 타임라인 카드 내 명소/온천 상세 보기 버튼 */
+.btn-spot-detail {
+  background: linear-gradient(135deg, #3182ce, #2b6cb0);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 7px 12px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(49, 130, 206, 0.25);
+}
+
+.btn-spot-detail:hover {
+  background: linear-gradient(135deg, #2b6cb0, #2c5282);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(49, 130, 206, 0.35);
+}
+
+.btn-spot-detail:active {
+  transform: scale(0.96);
+}
+
+body.dark-mode .btn-spot-detail {
+  background: linear-gradient(135deg, #2b6cb0, #2c5282);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* 동선 복귀 시 카드 펄스 하이라이트 애니메이션 */
+@keyframes stepHighlightPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(49, 130, 206, 0.7);
+    border-color: #3182ce;
+    transform: scale(1);
+  }
+  30% {
+    box-shadow: 0 0 0 8px rgba(49, 130, 206, 0.3);
+    border-color: #2b6cb0;
+    transform: scale(1.02);
+  }
+  60% {
+    box-shadow: 0 0 0 4px rgba(49, 130, 206, 0.15);
+    border-color: #3182ce;
+    transform: scale(1.01);
+  }
+  100% {
+    box-shadow: var(--shadow-sm);
+    border-color: var(--border-color);
+    transform: scale(1);
+  }
+}
+
+.step-highlight-pulse .step-card {
+  animation: stepHighlightPulse 2s ease-in-out;
+  border-color: var(--primary-color) !important;
+}
+
+/* 상세 페이지 상단/하단 뒤로가기 버튼이 동선 복귀 모드일 때 스타일 */
+.btn-back.timeline-return-mode {
+  background-color: #ebf8ff;
+  border: 1px solid #90cdf4;
+  color: #2b6cb0;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+}
+
+body.dark-mode .btn-back.timeline-return-mode {
+  background-color: #1a365d;
+  border-color: #2b6cb0;
+  color: #90cdf4;
+}
+
+.btn-back-bottom.timeline-return-mode {
+  background: linear-gradient(135deg, #3182ce, #2b6cb0);
+  color: #ffffff;
+  border: none;
+  font-weight: 700;
+  box-shadow: 0 4px 6px rgba(49, 130, 206, 0.3);
+}
+
 /* --------------------------------------------------------------------------
    [탭 3] 택시 카드 세부 스타일
    -------------------------------------------------------------------------- */

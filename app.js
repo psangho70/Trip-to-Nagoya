@@ -58,6 +58,7 @@ const itineraryData = {
       time: "13:05 ~ 14:20",
       type: "식사(점심)",
       typeBadge: "badge-tag",
+      placeId: "yabaton",
       title: "[점심] 나고야역 에스카(ESCA) 지하상가 미소카츠 또는 키시멘",
       transit: "호텔에서 지하상가 입구까지 도보 2분 (실내 이동)",
       cost: "1인 약 ¥1,500 ~ ¥2,200 (4인 약 ¥6,000 ~ ¥8,800)",
@@ -91,6 +92,7 @@ const itineraryData = {
       time: "17:15 ~ 19:00",
       type: "명소/야경",
       typeBadge: "badge-tag",
+      placeId: "oasis21",
       title: "사카에 오아시스 21 & 미라이 타워 야경 산책",
       transit: "호텔 앞 ➔ 사카에 오아시스 21 택시 약 10분 (4인 합산 약 ¥1,400)",
       cost: "오아시스 21 무료 / 미라이 타워 전망대(선택 ¥1,000)",
@@ -102,6 +104,7 @@ const itineraryData = {
       time: "19:00 ~ 20:30",
       type: "식사(저녁)",
       typeBadge: "badge-tag",
+      placeId: "nagoya-cochin",
       title: "[저녁] 사카에 라시크 백화점 히츠마부시 또는 나고야 코친 요리",
       transit: "오아시스 21에서 라시크(LACHIC) 백화점 도보 5분 (실내 이동)",
       cost: "1인 약 ¥3,000 ~ ¥4,500 (4인 약 ¥12,000 ~ ¥18,000)",
@@ -128,6 +131,7 @@ const itineraryData = {
       time: "08:15 ~ 09:15",
       type: "식사(아침)",
       typeBadge: "badge-tag",
+      placeId: "komeda-coffee",
       title: "[아침] 나고야 전통 '모닝 세트' 카페 체험",
       transit: "호텔에서 도보 2~3분 거리 인근 카페",
       cost: "1인 음료 가격 약 ¥500 ~ ¥600 (토스트/계란 무료 제공)",
@@ -139,6 +143,7 @@ const itineraryData = {
       time: "09:20 ~ 11:30",
       type: "명소/역사",
       typeBadge: "badge-tag",
+      placeId: "nagoya-castle",
       title: "나고야성 관람 (연말 휴관 전 필수 방문 · 혼마루 어전 집중)",
       transit: "호텔 앞 ➔ 나고야성 정문 택시 약 10~12분 (4인 합산 약 ¥1,600)",
       cost: "입장료 성인 1인 ¥500 (4인 ¥2,000)",
@@ -150,6 +155,7 @@ const itineraryData = {
       time: "11:35 ~ 12:50",
       type: "식사(점심)",
       typeBadge: "badge-tag",
+      placeId: "yabaton",
       title: "[점심] 긴샤치요코초 전통 미식 거리 식사",
       transit: "나고야성 정문 바로 앞 도보 1분",
       cost: "1인 약 ¥1,600 ~ ¥3,500 (4인 약 ¥7,000 ~ ¥14,000)",
@@ -165,6 +171,7 @@ const itineraryData = {
       time: "13:20 ~ 17:30",
       type: "온천/힐링",
       typeBadge: "badge-green",
+      placeId: "canal-resort",
       title: "[온천 코스 A] 도심 프리미엄 천연온천 '캐널 리조트 (Canal Resort)'",
       transit: "나고야역 앞 ➔ 캐널 리조트 전용 무료 셔틀버스 약 15분 탑승 (¥0)",
       cost: "주말 입욕료 1인 ¥950 + 암반욕 테라스파 ¥900 + 수건세트 ¥300 (1인 약 ¥2,150)",
@@ -176,6 +183,7 @@ const itineraryData = {
       time: "17:45 ~ 19:30",
       type: "쇼핑",
       typeBadge: "badge-tag",
+      placeId: "takashimaya-esca",
       title: "JR 나고야 타카시마야 백화점 & 미드랜드 스퀘어",
       transit: "캐널 리조트 무료 셔틀로 나고야역 하차 (도보 1분 연결)",
       cost: "면세 쇼핑 (여권 제시 필수)",
@@ -213,6 +221,7 @@ const itineraryData = {
       time: "14:00 ~ 15:40",
       type: "쇼핑",
       typeBadge: "badge-tag",
+      placeId: "jazz-dream",
       title: "미츠이 아울렛 파크 '재즈드림 나가시마' 쇼핑",
       transit: "버스 정류장 바로 앞 (도보 2분)",
       cost: "자유 쇼핑",
@@ -224,6 +233,7 @@ const itineraryData = {
       time: "15:40 ~ 18:00",
       type: "온천/대자연",
       typeBadge: "badge-green",
+      placeId: "yuamino-shima",
       title: "[온천 코스 B] 일본 최대급 대자연 노천온천 '유아미노시마 (湯あみの島)'",
       transit: "아울렛 바로 옆 건물 연결 (도보 3분)",
       cost: "15시 이후 야간할인 1인 ¥2,000 (수건·유카타 관내복 무료 포함!)",
@@ -235,6 +245,7 @@ const itineraryData = {
       time: "18:15 ~ 20:15",
       type: "명소/일루미",
       typeBadge: "badge-tag",
+      placeId: "nabana-no-sato",
       title: "나바나노사토 겨울 일루미네이션 관람 & 원내 저녁 식사",
       transit: "나가시마 온천 ➔ 나바나노사토 셔틀버스 약 15분 (편도 ¥500)",
       cost: "입장료 성인 1인 ¥3,000 (★원내 식당/매점 사용 가능한 ¥1,000 금권 쿠폰 포함!)",
@@ -260,6 +271,7 @@ const itineraryData = {
       time: "08:30 ~ 09:30",
       type: "식사(아침)",
       typeBadge: "badge-tag",
+      placeId: "komeda-coffee",
       title: "[아침] 에스카 지하상가 또는 호텔 인근 여유로운 조식",
       transit: "호텔 도보 3분",
       cost: "1인 약 ¥600 ~ ¥800",
@@ -271,6 +283,7 @@ const itineraryData = {
       time: "09:40 ~ 11:15",
       type: "명소/힐링",
       typeBadge: "badge-tag",
+      placeId: "atsuta-jingu",
       title: "아츠타 신궁 (熱田神宮) 삼나무 숲길 산책",
       transit: "메이테츠 나고야역 ➔ 진구마에역 특급열차 약 7분 탑승 (1인 ¥260 / 4인 ¥1,040)",
       cost: "신궁 경내 입장료 무료",
@@ -282,6 +295,7 @@ const itineraryData = {
       time: "11:20 ~ 12:45",
       type: "식사(점심)",
       typeBadge: "badge-tag",
+      placeId: "atsuta-horaiken",
       title: "[점심] 원조 150년 전통 '아츠타 호라이켄' 히츠마부시 만찬",
       transit: "아츠타 신궁 남문 / 진구마에역 바로 앞 (도보 3분)",
       cost: "히츠마부시 1인 약 ¥4,500 ~ ¥5,500 (4인 약 ¥18,000 ~ ¥22,000)",
@@ -293,6 +307,7 @@ const itineraryData = {
       time: "13:00 ~ 15:30",
       type: "명소/쇼핑",
       typeBadge: "badge-tag",
+      placeId: "osu-shopping",
       title: "오스 관음 (大須観音) 참배 & 오스 상점가 아케이드 탐방",
       transit: "아츠타 호라이켄 앞 ➔ 오스 관음 택시 약 12분 (4인 합산 약 ¥1,800)",
       cost: "택시비 4인 약 ¥1,800 (1인 약 ¥450) / 경내 무료",
@@ -304,6 +319,7 @@ const itineraryData = {
       time: "15:40 ~ 17:30",
       type: "쇼핑/휴식",
       typeBadge: "badge-blue",
+      placeId: "bic-camera",
       title: "호텔 복귀 휴식 & 맞은편 빅카메라(Bic Camera) 쇼핑",
       transit: "오스 상점가 ➔ 호텔 택시 약 8~10분 (4인 약 ¥1,400)",
       cost: "면세 쇼핑 (여권 제시)",
@@ -315,6 +331,7 @@ const itineraryData = {
       time: "17:45 ~ 20:30",
       type: "온천/식사",
       typeBadge: "badge-green",
+      placeId: "yukichiro",
       title: "[온천/저녁] 타이코 천연온천 '유키치로(湯吉郎)' & 관내 일식 정식",
       transit: "나고야역 태합통구 앞 ➔ 유키치로 무료 셔틀버스 약 15분 (또는 택시 10분 약 ¥1,600)",
       cost: "평일 입욕료 1인 ¥850 + 식사 1인 약 ¥1,500 ~ ¥2,000",
@@ -340,6 +357,7 @@ const itineraryData = {
       time: "10:00 ~ 12:15",
       type: "쇼핑",
       typeBadge: "badge-tag",
+      placeId: "takashimaya-esca",
       title: "JR 타카시마야 & 메이테츠 백화점 지하 식품관(데파치카) 선물 쇼핑",
       transit: "호텔에서 나고야역 백화점 지하 도보 5분 (실내 이동)",
       cost: "기념품 구매",
@@ -351,6 +369,7 @@ const itineraryData = {
       time: "12:15 ~ 13:40",
       type: "식사(점심)",
       typeBadge: "badge-tag",
+      placeId: "nagoya-cochin",
       title: "[점심] 나고야역 고별 오찬 (타워 플라자 또는 에스카)",
       transit: "백화점 내 식당가 엘리베이터 이동",
       cost: "1인 약 ¥1,800 ~ ¥3,000 (4인 약 ¥7,200 ~ ¥12,000)",
@@ -373,6 +392,7 @@ const itineraryData = {
       time: "15:00 ~ 17:00",
       type: "공항스파/쇼핑",
       typeBadge: "badge-green",
+      placeId: "centrair-spa",
       title: "센트레아 T1 4층 스카이타운 & 전망 목욕탕 '소라노유(SOLA SPA)'",
       transit: "수하물 위탁 후 4층 에스컬레이터 이동",
       cost: "목욕탕 1인 ¥1,500 (수건 포함)",
@@ -1073,13 +1093,27 @@ function renderTimeline(containerId, steps) {
   const container = document.getElementById(containerId);
   if (!container) return;
 
-  container.innerHTML = steps.map((s, idx) => `
-    <div class="timeline-step">
+  const dayMatch = containerId.match(/day-(\d+)/);
+  const dayNum = dayMatch ? parseInt(dayMatch[1], 10) : 1;
+
+  container.innerHTML = steps.map((s, idx) => {
+    const stepId = `step-${containerId}-${idx}`;
+    const place = s.placeId ? placesData.find(p => p.id === s.placeId) : null;
+
+    return `
+    <div class="timeline-step" id="${stepId}">
       <div class="step-marker">${idx + 1}</div>
       <div class="step-card">
         <div class="step-time-header">
           <span class="step-time">⏰ ${s.time}</span>
-          <span class="step-type-badge ${s.typeBadge || 'badge-tag'}">${s.type}</span>
+          <div class="step-header-tags">
+            ${place ? `
+              <button class="step-spot-badge-btn" onclick="goToPlaceDetailFromTimeline('${s.placeId}', '${stepId}', ${dayNum})" title="${place.titleKr} 상세 정보 및 현장 사진 보기">
+                <span>♨️ 상세 정보</span> ❯
+              </button>
+            ` : ''}
+            <span class="step-type-badge ${s.typeBadge || 'badge-tag'}">${s.type}</span>
+          </div>
         </div>
         <h4 class="step-title">${s.title}</h4>
         <div class="step-transit-box">
@@ -1093,12 +1127,18 @@ function renderTimeline(containerId, steps) {
         <p class="step-desc">${s.desc}</p>
         ${s.tip ? `<div class="step-tip-box">${s.tip}</div>` : ''}
         <div class="step-actions">
+          ${place ? `
+            <button class="btn-spot-detail" onclick="goToPlaceDetailFromTimeline('${s.placeId}', '${stepId}', ${dayNum})">
+              <span>♨️ ${place.titleKr.split('&')[0].trim()} 상세 & 실제 사진 보기 ❯</span>
+            </button>
+          ` : ''}
           ${s.mapQuery ? `<a href="https://maps.google.com/?q=${encodeURIComponent(s.mapQuery)}" target="_blank" rel="noopener" class="btn-subtle">구글맵 위치 📍</a>` : ''}
           <button class="btn-subtle" onclick="switchTab('tab-taxi')">택시 카드 보기 🚕</button>
         </div>
       </div>
     </div>
-  `).join('');
+  `;
+  }).join('');
 }
 
 // 2.5 택시 목적지 카드 렌더링
@@ -1257,6 +1297,45 @@ function filterPlaces(category) {
 }
 
 // 2.6.1 방문지 상세 페이지 열기 (모바일 뷰 전환)
+let timelineReturnContext = null;
+
+function goToPlaceDetailFromTimeline(placeId, stepId, dayNum) {
+  // 1. 돌아올 동선 위치 정보 저장
+  timelineReturnContext = {
+    stepId: stepId,
+    dayNum: dayNum,
+    scrollPos: window.scrollY
+  };
+
+  // 2. 명소/온천 탭 활성화
+  switchTab('tab-places');
+
+  // 3. 해당 장소 상세 페이지 열기
+  openPlaceDetail(placeId);
+
+  // 4. 뒤로가기 버튼 텍스트를 "4일 동선으로 돌아가기"로 변경
+  updateBackButtonsForTimeline(true, dayNum);
+}
+
+function updateBackButtonsForTimeline(isFromTimeline, dayNum = 1) {
+  const topBackText = document.getElementById("btn-detail-back-text");
+  const bottomBackBtn = document.querySelector(".btn-back-bottom");
+  const topBackBtn = document.getElementById("btn-detail-back");
+
+  if (isFromTimeline) {
+    const text = `‹ ${dayNum}일차 동선으로 돌아가기`;
+    if (topBackText) topBackText.textContent = text;
+    if (bottomBackBtn) bottomBackBtn.innerHTML = `‹ ${dayNum}일차 동선으로 돌아가기 (방금 보던 위치)`;
+    if (topBackBtn) topBackBtn.classList.add("timeline-return-mode");
+    if (bottomBackBtn) bottomBackBtn.classList.add("timeline-return-mode");
+  } else {
+    if (topBackText) topBackText.textContent = "목록으로";
+    if (bottomBackBtn) bottomBackBtn.innerHTML = "‹ 목록으로 돌아가기";
+    if (topBackBtn) topBackBtn.classList.remove("timeline-return-mode");
+    if (bottomBackBtn) bottomBackBtn.classList.remove("timeline-return-mode");
+  }
+}
+
 function openPlaceDetail(placeId) {
   const place = placesData.find(p => p.id === placeId);
   if (!place) return;
@@ -1397,7 +1476,7 @@ function openPlaceDetail(placeId) {
     <!-- 하단 뒤로가기 버튼 -->
     <div class="detail-bottom-back-wrap">
       <button class="btn-back-bottom" onclick="closePlaceDetail()">
-        ‹ 목록으로 돌아가기
+        ${timelineReturnContext ? `‹ ${timelineReturnContext.dayNum}일차 동선으로 돌아가기 (방금 보던 위치)` : '‹ 목록으로 돌아가기'}
       </button>
     </div>
   `;
@@ -1419,9 +1498,46 @@ function closePlaceDetail(scrollUp = true) {
   if (detailView && listView && detailView.style.display !== "none") {
     detailView.style.display = "none";
     listView.style.display = "block";
-    if (scrollUp) {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  // 4일 동선에서 넘어왔던 경우: 해당 동선 및 원래 위치로 부드럽게 복귀!
+  if (timelineReturnContext) {
+    const returnCtx = timelineReturnContext;
+    timelineReturnContext = null;
+    updateBackButtonsForTimeline(false);
+
+    // 1. 4일 동선 탭으로 복귀
+    switchTab('tab-itinerary');
+
+    // 2. 해당 일차 활성화
+    switchDay(returnCtx.dayNum);
+
+    // 3. 해당 일정 카드로 부드럽게 스크롤 & 펄스 하이라이트 애니메이션
+    setTimeout(() => {
+      const targetCard = document.getElementById(returnCtx.stepId);
+      if (targetCard) {
+        targetCard.scrollIntoView({ behavior: "smooth", block: "center" });
+        targetCard.classList.add("step-highlight-pulse");
+        setTimeout(() => {
+          targetCard.classList.remove("step-highlight-pulse");
+        }, 2200);
+      }
+    }, 120);
+
+    if (window.location.hash) {
+      history.pushState('', document.title, window.location.pathname + window.location.search);
     }
+    return;
+  }
+
+  // 일반 명소 탭에서 진입했던 경우
+  updateBackButtonsForTimeline(false);
+  if (scrollUp) {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  if (window.location.hash) {
+    history.pushState('', document.title, window.location.pathname + window.location.search);
   }
 }
 
