@@ -2,6 +2,7 @@
 
 > **여행 기간**: 2026년 12월 26일(토) ~ 12월 29일(화) (3박 4일)  
 > **여행 인원**: 성인 4인 가족 맞춤 (이동 시간 및 보행 피로도 최소화 동선)  
+> **웹서비스 바로가기 (GitHub Pages)**: [https://psangho70.github.io/Trip-to-Nagoya/](https://psangho70.github.io/Trip-to-Nagoya/)  
 > **저장소 주소**: [https://github.com/psangho70/Trip-to-Nagoya](https://github.com/psangho70/Trip-to-Nagoya)
 
 본 프로젝트는 2026년 12월 말 일본 나고야로 떠나는 성인 4인 가족의 실제 항공권 및 호텔 예약 바우처를 분석하여, **출발부터 귀국까지 이동 피로를 최소화한 3박 4일 최적 동선, 택시 기사님께 들려주는 일본어 음성(TTS) 목적지 카드, 명소·온천·쇼핑·미식 16선 상세 페이지 및 실제 현장 사진 갤러리**를 스마트폰 모바일 웹과 PC에서 모두 편리하게 확인할 수 있도록 제작한 반응형 웹 애플리케이션입니다.
@@ -62,6 +63,10 @@
 ### Step 7. `README.md` 작성 및 GitHub 원격 저장소 백업
 - **요구사항**: 전체 개발 과정을 `README.md` 파일로 정리하고 GitHub(`https://github.com/psangho70/Trip-to-Nagoya`)에 백업.
 - **구현 내용**: 프로젝트 루트 `README.md` 작성, `Trip to Nagoya` 독립 Git 저장소 구성을 통한 `main` 브랜치 원격 푸시 완료.
+
+### Step 8. GitHub Pages 웹 호스팅 자동 배포 워크플로우 구성
+- **요구사항**: GitHub 레파지토리 `Settings > Pages` 설정(`Source: GitHub Actions`)을 점검하고 웹에서 바로 접속 가능한 주소 확인 및 자동 배포 구성.
+- **구현 내용**: 사용자가 설정한 `Source: GitHub Actions` 환경에서 별도의 수동 설정 없이 즉시 정적 웹페이지가 빌드·배포되도록 `.github/workflows/static.yml` 및 `.nojekyll` 파일을 구성하여 푸시 완료 ([https://psangho70.github.io/Trip-to-Nagoya/](https://psangho70.github.io/Trip-to-Nagoya/)).
 
 ---
 
