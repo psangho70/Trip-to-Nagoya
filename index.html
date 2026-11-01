@@ -25,6 +25,10 @@
         <p class="trip-date">2026.12.26(토) ~ 12.29(화) · 3박 4일</p>
       </div>
       <div class="header-actions">
+        <button id="notice-btn" class="icon-btn notice-btn" title="여행 필수 주의사항 확인" onclick="openNoticeModal()">
+          <span class="btn-icon">⚠️</span>
+          <span class="btn-text">주의사항</span>
+        </button>
         <button id="font-size-btn" class="icon-btn" title="큰 글씨 모드 전환">
           <span class="btn-icon">🔍</span>
           <span class="btn-text">큰 글씨</span>
@@ -32,15 +36,6 @@
         <button id="theme-btn" class="icon-btn" title="다크 모드 전환">
           <span class="btn-icon">🌙</span>
         </button>
-      </div>
-    </div>
-
-    <!-- 터미널 주의 경고 배너 -->
-    <div class="terminal-alert-bar">
-      <div class="alert-icon">⚠️</div>
-      <div class="alert-content">
-        <strong>[필독] 공항 터미널 상이 주의!</strong>
-        <span>출국: 인천 <b>T1</b> ➔ 나고야 <b>T2</b> | 귀국: 나고야 <b>T1</b> ➔ 인천 <b>T2</b></span>
       </div>
     </div>
   </header>
@@ -54,7 +49,9 @@
       <div class="summary-hero-card">
         <div class="hero-header">
           <h2>여행 핵심 요약 대시보드</h2>
-          <span class="badge-status">예약 완료</span>
+          <button class="badge-status-btn" onclick="openNoticeModal()" title="여행 필수 주의사항 확인">
+            ⚠️ 필수 주의사항 확인
+          </button>
         </div>
         <div class="hero-grid">
           <div class="hero-item">
@@ -518,6 +515,76 @@
       <span class="nav-label">경비·체크</span>
     </button>
   </nav>
+
+  <!-- 여행 주의사항 안내 팝업 모달 -->
+  <div id="notice-modal" class="modal-overlay" onclick="closeNoticeModal()">
+    <div class="modal-content notice-modal-content" onclick="event.stopPropagation()">
+      <div class="modal-header notice-modal-header">
+        <h4>⚠️ 나고야 여행 필수 주의사항</h4>
+        <button class="modal-close-btn" onclick="closeNoticeModal()">✕</button>
+      </div>
+      <div class="modal-body notice-modal-body">
+        <!-- 1. 핵심 주의: 공항 터미널 상이 -->
+        <div class="notice-card highlight">
+          <div class="notice-card-title">
+            <span class="notice-badge danger">🚨 최우선 주의</span>
+            <strong>공항 터미널이 출국·귀국 시 서로 다릅니다!</strong>
+          </div>
+          <p class="notice-card-sub">예약된 항공편별 터미널이 다르므로 당일 공항 이동 시 반드시 확인하세요.</p>
+          <div class="terminal-compare-grid">
+            <div class="terminal-box outbound">
+              <span class="terminal-label">출국 (12/26 토) · 제주항공</span>
+              <div class="terminal-route">
+                <span class="t-badge">인천공항 <b>T1</b></span>
+                <span class="t-arrow">➔</span>
+                <span class="t-badge alert">나고야 <b>T2</b></span>
+              </div>
+              <small>* 센트레아 T2 도착 후 무빙워크로 T1/철도역 이동</small>
+            </div>
+            <div class="terminal-box inbound">
+              <span class="terminal-label">귀국 (12/29 화) · 진에어</span>
+              <div class="terminal-route">
+                <span class="t-badge alert">나고야 <b>T1</b></span>
+                <span class="t-arrow">➔</span>
+                <span class="t-badge">인천공항 <b>T2</b></span>
+              </div>
+              <small>* 귀국 시에는 나고야 T1으로 가셔야 합니다! (인천 도착도 T2)</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. 나고야성 연말 휴관 안내 -->
+        <div class="notice-card">
+          <div class="notice-card-title">
+            <span class="notice-badge warning">🏯 관광지 휴관</span>
+            <strong>나고야성 연말 휴관 (12/29~31)</strong>
+          </div>
+          <p class="notice-text">
+            나고야성은 12월 29일부터 연말 휴관에 들어갑니다. 본 여행 가이드는 이를 사전에 반영하여 <strong>2일차(12/27 일요일) 오전에 방문</strong>하도록 최적화되어 있으니 안심하고 일정대로 진행하시면 됩니다.
+          </p>
+        </div>
+
+        <!-- 3. 성인 4인 이동 꿀팁 -->
+        <div class="notice-card">
+          <div class="notice-card-title">
+            <span class="notice-badge info">🚕 피로 최소화</span>
+            <strong>성인 4인 단거리 택시 적극 활용 추천</strong>
+          </div>
+          <p class="notice-text">
+            일본 택시 기본요금은 약 ¥500으로, 4인이 함께 타면 지하철 요금과 큰 차이 없이 지하철 계단 환승 피로를 덜 수 있습니다. 
+            앱의 <b>[택시 카드]</b> 탭에서 기사님께 화면을 보여주거나 <b>'기사님께 들려주기(음성)'</b> 버튼을 누르면 언어 소통 없이 목적지까지 갈 수 있습니다.
+          </p>
+        </div>
+      </div>
+      <div class="modal-footer notice-modal-footer">
+        <label class="dont-show-today">
+          <input type="checkbox" id="chk-today-notice">
+          <span>오늘 하루 동안 이 창 열지 않기</span>
+        </label>
+        <button class="btn-primary" onclick="confirmNoticeModal()">확인 및 가이드 시작</button>
+      </div>
+    </div>
+  </div>
 
   <!-- 원본 바우처 이미지 모달 팝업 -->
   <div id="image-modal" class="modal-overlay" onclick="closeImageModal()">

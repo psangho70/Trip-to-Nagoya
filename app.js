@@ -1002,6 +1002,7 @@ let checklistItems = [];
 document.addEventListener("DOMContentLoaded", () => {
   initTheme();
   initFontSize();
+  initNoticeModal();
   loadChecklist();
   renderItineraries();
   renderTaxiCards();
@@ -1518,22 +1519,66 @@ function closeImageModal() {
 function initFontSize() {
   const btn = document.getElementById("font-size-btn");
   const isLarge = localStorage.getItem("nagoya_large_font") === "true";
-  if (isLarge) document.body.classList.add("large-font");
+  if (isLarge) {
+    document.documentElement.classList.add("large-font");
+    document.body.classList.add("large-font");
+  }
   updateFontBtnText();
 
   btn?.addEventListener("click", () => {
-    document.body.classList.toggle("large-font");
-    localStorage.setItem("nagoya_large_font", document.body.classList.contains("large-font"));
+    const isNowLarge = document.documentElement.classList.toggle("large-font");
+    document.body.classList.toggle("large-font", isNowLarge);
+    localStorage.setItem("nagoya_large_font", isNowLarge);
     updateFontBtnText();
-    showToast(document.body.classList.contains("large-font") ? "큰 글씨 모드가 켜졌습니다." : "보통 글씨 모드로 전환되었습니다.");
+    showToast(isNowLarge ? "🔍 큰 글씨 모드가 켜졌습니다. (부모님 추천)" : "보통 글씨 크기로 전환되었습니다.");
   });
 }
 
 function updateFontBtnText() {
   const btnText = document.querySelector("#font-size-btn .btn-text");
+  const isLarge = document.documentElement.classList.contains("large-font");
   if (btnText) {
-    btnText.textContent = document.body.classList.contains("large-font") ? "보통 글씨" : "큰 글씨";
+    btnText.textContent = isLarge ? "보통 글씨" : "큰 글씨";
   }
+}
+
+// 2.10.1 여행 필수 주의사항 모달 (처음 실행 시 팝업 및 오늘 하루 안 보기 기능)
+function initNoticeModal() {
+  // 오늘 날짜 문자열 (YYYY-MM-DD)
+  const todayStr = new Date().toISOString().split("T")[0];
+  const hideDate = localStorage.getItem("nagoya_hide_notice_date");
+
+  // 오늘 하루 안 보기가 체크되어 있지 않거나 날짜가 지났으면 팝업 노출
+  if (hideDate !== todayStr) {
+    setTimeout(() => {
+      openNoticeModal();
+    }, 350);
+  }
+}
+
+function openNoticeModal() {
+  const modal = document.getElementById("notice-modal");
+  if (modal) {
+    modal.classList.add("active");
+    document.body.style.overflow = "hidden"; // 배경 스크롤 방지
+  }
+}
+
+function closeNoticeModal() {
+  const modal = document.getElementById("notice-modal");
+  if (modal) {
+    modal.classList.remove("active");
+    document.body.style.overflow = "";
+  }
+}
+
+function confirmNoticeModal() {
+  const chk = document.getElementById("chk-today-notice");
+  if (chk && chk.checked) {
+    const todayStr = new Date().toISOString().split("T")[0];
+    localStorage.setItem("nagoya_hide_notice_date", todayStr);
+  }
+  closeNoticeModal();
 }
 
 function initTheme() {
