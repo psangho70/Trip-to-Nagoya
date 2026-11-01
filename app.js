@@ -25,6 +25,8 @@ const itineraryData = {
       time: "10:55 ~ 11:50",
       type: "도착/이동",
       typeBadge: "badge-tag",
+      placeId: "centrair-airport",
+      subPlaceId: "mu-sky",
       title: "나고야 츄부 센트레아 공항 T2 도착 ➔ 철도역(액세스 플라자) 이동",
       transit: "실내 무빙워크 연결 통로 도보 약 8~10분",
       cost: "공항 무료 연결 통로",
@@ -36,6 +38,8 @@ const itineraryData = {
       time: "12:07 ~ 12:35",
       type: "특급열차",
       typeBadge: "badge-green",
+      placeId: "mu-sky",
+      subPlaceId: "centrair-airport",
       title: "메이테츠 공항선 특급 '뮤스카이(μSKY)' 탑승",
       transit: "메이테츠 공항역 ➔ 메이테츠 나고야역 (최단 28분 소요)",
       cost: "1인 ¥1,430 (운임 ¥980 + 지정석 ¥450) / 4인 합산 ¥5,720",
@@ -381,6 +385,8 @@ const itineraryData = {
       time: "14:20 ~ 14:48",
       type: "특급열차",
       typeBadge: "badge-green",
+      placeId: "mu-sky",
+      subPlaceId: "centrair-airport",
       title: "메이테츠 나고야역 ➔ 센트레아 공항 제1터미널(T1) 특급 뮤스카이",
       transit: "메이테츠 나고야역 ➔ 츄부 센트레아 공항역 (28분 소요)",
       cost: "1인 ¥1,430 (지정석 포함) / 4인 ¥5,720",
@@ -393,6 +399,7 @@ const itineraryData = {
       type: "공항스파/쇼핑",
       typeBadge: "badge-green",
       placeId: "centrair-spa",
+      subPlaceId: "centrair-airport",
       title: "센트레아 T1 4층 스카이타운 & 전망 목욕탕 '소라노유(SOLA SPA)'",
       transit: "수하물 위탁 후 4층 에스컬레이터 이동",
       cost: "목욕탕 1인 ¥1,500 (수건 포함)",
@@ -404,6 +411,8 @@ const itineraryData = {
       time: "17:00 ~ 18:30",
       type: "출국심사",
       typeBadge: "badge-blue",
+      placeId: "centrair-airport",
+      subPlaceId: "centrair-spa",
       title: "보안검색 및 출국심사 ➔ 면세점 쇼핑 & 탑승 게이트 이동",
       transit: "T1 3층 국제선 출국장",
       cost: "면세점 쇼핑",
@@ -654,6 +663,64 @@ const placesData = [
     holidayNotice: "12월 말 연말 기간에도 화려하게 매일 운영됩니다. (인파가 많을 수 있으니 일몰 직후 입장 추천)",
     tip: "겨울 밤 야외 정원은 강바람으로 매우 춥습니다. 패딩, 목도리, 장갑, 핫팩을 꼭 챙기세요.",
     mapUrl: "https://maps.google.com/?q=Nabana+no+Sato"
+  },
+  {
+    id: "centrair-airport",
+    category: "sightseeing",
+    categoryLabel: "명소·공항",
+    titleKr: "나고야 츄부 센트레아 국제공항 (T1·T2 & 스카이타운)",
+    titleJp: "中部国際空港 セントレア",
+    features: ["입국 T2 · 귀국 T1 필독", "액세스 플라자 철도 직결", "4층 스카이타운 미식·쇼핑", "300m 활주로 전망 덱"],
+    images: [
+      { url: "images/centrair_airport_1.jpg", caption: "메이테츠 공항역(액세스 플라자)과 평지로 직결된 센트레아 제1터미널(T1) 실제 전경" },
+      { url: "images/centrair_airport_3.jpg", caption: "센트레아 공항 액세스 플라자 내 제2터미널(T2) 무빙워크 연결 통로 안내 표지판" },
+      { url: "images/centrair_airport_4.jpg", caption: "이세만 해상 인공섬에 건설된 츄부 센트레아 국제공항 여객 터미널 및 활주로 전경" }
+    ],
+    desc: "나고야 남쪽 이세만 해상 인공섬에 자리한 중부 지방의 관문 국제공항. 1일차 도착(제주항공)은 제2터미널(T2)로 입국하고, 4일차 출발(진에어)은 먹거리와 볼거리가 풍성한 제1터미널(T1)에서 출국합니다. T1 4층 스카이타운에는 전통 거리를 재현한 '초친요코초', 300m 야외 전망 덱, 전망 온천이 완비되어 공항 자체가 복합 관광 명소로 꼽힙니다.",
+    hours: "연중무휴 24시간 개방 (T1 4층 스카이타운 식당·상점가 약 09:00 ~ 21:00 / 면세점 출국장 연동)",
+    cost: "공항 입장 및 4층 야외 스카이 덱 무료 (무빙워크 실내 연결 통로 무료)",
+    transit: "메이테츠 나고야역에서 특급 '뮤스카이(μSKY)'로 28분 직결 (공항역 개찰구에서 T1은 도보 2분, T2는 무빙워크 평지 도보 8~10분)",
+    duration: "입국 이동 시 약 40~50분 / 귀국 스카이타운·면세점 이용 시 약 2~3시간",
+    fatigue: "매우 낮음 (전 구간 실내 무빙워크 및 엘리베이터 완비)",
+    speakText: "セントレアの中部国際空港までお願いします。",
+    tourPoints: [
+      { icon: "✈️", title: "터미널 구분 핵심 체크 (입국 T2 vs 귀국 T1)", text: "1일차 제주항공(7C 1201) 도착은 '제2터미널(T2)'이며, 실내 무빙워크를 따라 약 8~10분 걸으면 철도역(액세스 플라자)에 닿습니다. 4일차 진에어(LJ 0294) 귀국은 철도역 바로 앞 '제1터미널(T1)' 3층에서 수속합니다." },
+      { icon: "🏮", title: "T1 4층 스카이타운 '초친요코초' & '렌가도리'", text: "일본 전통 등불 거리(초친요코초)와 서양식 붉은 벽돌 거리(렌가도리)에 야바톤(미소카츠), 마루야 본점(장어덮밥), 에비센베이노사토(새우전병) 등 나고야 대표 맛집과 기념품점이 모여 있습니다." },
+      { icon: "🛫", title: "300m 야외 스카이 덱 (Sky Deck) & T1 면세점", text: "활주로 불과 300m 거리에서 비행기 이착륙과 이세만 바다 풍경을 감상할 수 있으며, 출국 심사 후 면세점에서 로이스 초콜릿, 주류, 나고야 명과를 잔여 엔화로 알뜰하게 구매할 수 있습니다." }
+    ],
+    recommendedCourse: "[1일차 입국] T2 도착 및 수하물 수령 ➔ 실내 무빙워크 따라 액세스 플라자(메이테츠 공항역) 이동 ➔ 뮤스카이 탑승 / [4일차 귀국] 공항역 하차 후 T1 3층 진에어 수하물 위탁 ➔ 4층 스카이타운·소라노유 스파 힐링 ➔ 3층 출국 심사 및 면세점 쇼핑",
+    holidayNotice: "연말(12/26~12/29) 전 터미널 및 스카이타운, 면세점 모두 휴무 없이 정상 운영됩니다.",
+    tip: "시내에서 미처 못 산 새우 센베이(에비센베이노사토)나 나고야 한정 과자는 T1 3층 출발 로비 및 4층 스카이타운, 면세점에서 대기 없이 편리하게 구매하실 수 있습니다.",
+    mapUrl: "https://maps.google.com/?q=Chubu+Centrair+International+Airport"
+  },
+  {
+    id: "mu-sky",
+    category: "sightseeing",
+    categoryLabel: "명소·특급열차",
+    titleKr: "메이테츠 공항선 특급 '뮤스카이(μSKY)'",
+    titleJp: "名鉄空港特急 ミュースカイ (μSKY)",
+    features: ["나고야역 28분 직통", "전 좌석 지정석", "대형 캐리어 보관대", "무환승 최단 이동"],
+    images: [
+      { url: "images/musky_2.jpg", caption: "센트레아 공항과 메이테츠 나고야역을 최단 28분에 잇는 푸른빛 특급 '뮤스카이(2000계)' 실제 열차" },
+      { url: "images/musky_3.jpg", caption: "메이테츠 츄부국제공항역(센트레아)의 쾌적한 실내 냉난방 대기 라운지 및 전용 탑승 홈" },
+      { url: "images/musky_4.jpg", caption: "메이테츠 츄부국제공항(센트레아)역 공식 역명판과 나고야 방면 열차 시각표 안내판" }
+    ],
+    desc: "츄부 센트레아 국제공항과 나고야 도심(메이테츠 나고야역)을 단 28분 만에 연결하는 공항 전용 쾌속 특급 열차입니다. 전 좌석이 넓고 안락한 리클라이닝 지정석으로 운영되며, 객차 출입구마다 대형 여행용 캐리어 전용 수하물 보관대가 완비되어 있어 성인 4인 가족이 가장 편안하게 이동할 수 있는 대표 교통수단입니다.",
+    hours: "약 30분 간격 상시 운행 (공항발 나고야행 첫차 06:54 ~ 막차 23:31 / 낮 시간대 매시 07분·37분경 출발)",
+    cost: "성인 1인 편도 ¥1,430 (기본 승차권 ¥980 + 특별차량 지정석권 '뮤티켓' ¥450) / 4인 합산 ¥5,720",
+    transit: "1일차: 메이테츠 공항역(1번 홈) ➔ 메이테츠 나고야역 / 4일차: 메이테츠 나고야역 ➔ 메이테츠 공항역 (최단 28분 소요, 징구마에·카나야마역만 정차)",
+    duration: "편도 정확히 28분 소요",
+    fatigue: "극도로 낮음 (100% 지정석 착석 + 무환승 직통)",
+    speakText: "名鉄名古屋駅まで、ミュースカイを4枚お願いします。",
+    tourPoints: [
+      { icon: "🎫", title: "승차권 + 뮤티켓(μTicket) 4인 연석 발권 팁", text: "뮤스카이는 전 좌석 지정석이므로 기본 운임권(¥980) 외에 반드시 특별차량권인 '뮤티켓(¥450)'을 함께 구입해야 합니다. 매표소 창구에서 하단 '기사님/역무원께 일본어로 들려주기' 버튼을 재생하시면 성인 4명 나란히 앉는 좌석으로 즉시 발권해 줍니다." },
+      { icon: "🧳", title: "객차 내 대형 캐리어 전용 보관함 완비", text: "각 차량 출입구 바로 옆에 대형 캐리어 4개를 거뜬히 넣을 수 있는 2단 수하물 랙이 마련되어 있어, 좌석까지 무거운 짐을 들고 들어갈 필요 없이 두 손 가볍게 착석할 수 있습니다." },
+      { icon: "🚉", title: "센트레아 공항역 '1번 승강장' 실내 대기실", text: "공항역 개찰구를 통과한 뒤 왼쪽 '1번 홈(뮤스카이 전용 플랫폼)'으로 들어가면 유리문으로 둘러싸인 냉난방 대기 라운지가 있어 출발 직전까지 소파에 앉아 편안하게 쉴 수 있습니다." }
+    ],
+    recommendedCourse: "[1일차] 공항역 매표소에서 4인 연석 발권(¥5,720) ➔ 1번 홈 실내 라운지 대기 ➔ 12:07 뮤스카이 탑승 및 캐리어 보관 ➔ 12:35 메이테츠 나고야역 하차 후 태합통구 도보 5분 APA 호텔 이동",
+    holidayNotice: "연말(12/26~12/29) 전 구간 정상 운행됩니다. (주말·연말 시간표는 매시 07분, 37분 출발 기준)",
+    tip: "일반 특급(빨간색 열차)은 통근 승객과 섞여 서서 가야 할 수 있지만, 파란색 '뮤스카이'는 1인당 450엔만 추가하면 4명 전원 무조건 편안하게 앉아서 갈 수 있어 피로도를 획기적으로 줄여줍니다.",
+    mapUrl: "https://maps.google.com/?q=Central+Japan+International+Airport+Station"
   },
 
   // ============================== [온천] ==============================
@@ -1105,6 +1172,16 @@ function renderDay2Timeline() {
   renderTimeline("timeline-day-2", day2Full);
 }
 
+function getPlaceIcon(place) {
+  if (!place) return '♨️';
+  if (place.id === 'centrair-airport') return '✈️';
+  if (place.id === 'mu-sky') return '🚄';
+  if (place.category === 'onsen') return '♨️';
+  if (place.category === 'shopping') return '🛍️';
+  if (place.category === 'food') return '🍱';
+  return '🏯';
+}
+
 function renderTimeline(containerId, steps) {
   const container = document.getElementById(containerId);
   if (!container) return;
@@ -1115,6 +1192,9 @@ function renderTimeline(containerId, steps) {
   container.innerHTML = steps.map((s, idx) => {
     const stepId = `step-${containerId}-${idx}`;
     const place = s.placeId ? placesData.find(p => p.id === s.placeId) : null;
+    const subPlace = s.subPlaceId ? placesData.find(p => p.id === s.subPlaceId) : null;
+    const placeIcon = getPlaceIcon(place);
+    const subPlaceIcon = getPlaceIcon(subPlace);
 
     return `
     <div class="timeline-step" id="${stepId}">
@@ -1125,13 +1205,15 @@ function renderTimeline(containerId, steps) {
           <div class="step-header-tags">
             ${place ? `
               <button class="step-spot-badge-btn" onclick="goToPlaceDetailFromTimeline('${s.placeId}', '${stepId}', ${dayNum})" title="${place.titleKr} 상세 정보 및 현장 사진 보기">
-                <span>♨️ 상세 정보</span> ❯
+                <span>${placeIcon} 상세 정보</span> ❯
               </button>
             ` : ''}
             <span class="step-type-badge ${s.typeBadge || 'badge-tag'}">${s.type}</span>
           </div>
         </div>
-        <h4 class="step-title">${s.title}</h4>
+        <h4 class="step-title ${place ? 'clickable-step-title' : ''}" ${place ? `onclick="goToPlaceDetailFromTimeline('${s.placeId}', '${stepId}', ${dayNum})" title="터치하면 ${place.titleKr} 상세 페이지로 이동합니다"` : ''}>
+          ${s.title}
+        </h4>
         <div class="step-transit-box">
           <div class="transit-row">
             <span>🚶 <b>이동:</b> ${s.transit}</span>
@@ -1145,7 +1227,12 @@ function renderTimeline(containerId, steps) {
         <div class="step-actions">
           ${place ? `
             <button class="btn-spot-detail" onclick="goToPlaceDetailFromTimeline('${s.placeId}', '${stepId}', ${dayNum})">
-              <span>♨️ ${place.titleKr.split('&')[0].trim()} 상세 & 실제 사진 보기 ❯</span>
+              <span>${placeIcon} ${place.titleKr.split('&')[0].trim()} 상세 & 실제 사진 보기 ❯</span>
+            </button>
+          ` : ''}
+          ${subPlace ? `
+            <button class="btn-spot-detail btn-spot-detail-sub" onclick="goToPlaceDetailFromTimeline('${s.subPlaceId}', '${stepId}', ${dayNum})">
+              <span>${subPlaceIcon} ${subPlace.titleKr.split('&')[0].trim()} 상세 & 실제 사진 보기 ❯</span>
             </button>
           ` : ''}
           ${s.mapQuery ? `<a href="https://maps.google.com/?q=${encodeURIComponent(s.mapQuery)}" target="_blank" rel="noopener" class="btn-subtle">구글맵 위치 📍</a>` : ''}
@@ -1450,9 +1537,9 @@ function updateBackButtonsForTimeline(isFromTimeline, dayNum = 1) {
   const topBackBtn = document.getElementById("btn-detail-back");
 
   if (isFromTimeline) {
-    const text = `‹ ${dayNum}일차 동선으로 돌아가기`;
+    const text = `‹ Day ${dayNum} 동선으로 돌아가기`;
     if (topBackText) topBackText.textContent = text;
-    if (bottomBackBtn) bottomBackBtn.innerHTML = `‹ ${dayNum}일차 동선으로 돌아가기 (방금 보던 위치)`;
+    if (bottomBackBtn) bottomBackBtn.innerHTML = `‹ Day ${dayNum} 동선으로 돌아가기 (방금 보던 위치)`;
     if (topBackBtn) topBackBtn.classList.add("timeline-return-mode");
     if (bottomBackBtn) bottomBackBtn.classList.add("timeline-return-mode");
   } else {
@@ -1460,6 +1547,91 @@ function updateBackButtonsForTimeline(isFromTimeline, dayNum = 1) {
     if (bottomBackBtn) bottomBackBtn.innerHTML = "‹ 목록으로 돌아가기";
     if (topBackBtn) topBackBtn.classList.remove("timeline-return-mode");
     if (bottomBackBtn) bottomBackBtn.classList.remove("timeline-return-mode");
+  }
+}
+
+// 특정 장소(placeId)가 포함된 4일 동선 항목들을 모두 조회하는 헬퍼
+function findTimelineStepsForPlace(placeId) {
+  const results = [];
+
+  // Day 1
+  itineraryData.day1.forEach((s, idx) => {
+    if (s.placeId === placeId || s.subPlaceId === placeId) {
+      results.push({ dayNum: 1, stepId: `step-timeline-day-1-${idx}`, time: s.time, title: s.title, opt: null });
+    }
+  });
+
+  // Day 2 Common
+  const commonLen = itineraryData.day2CommonMorning.length;
+  itineraryData.day2CommonMorning.forEach((s, idx) => {
+    if (s.placeId === placeId || s.subPlaceId === placeId) {
+      results.push({ dayNum: 2, stepId: `step-timeline-day-2-${idx}`, time: s.time, title: s.title, opt: null });
+    }
+  });
+
+  // Day 2 Option A
+  itineraryData.day2OptionA.forEach((s, idx) => {
+    if (s.placeId === placeId || s.subPlaceId === placeId) {
+      results.push({ dayNum: 2, stepId: `step-timeline-day-2-${commonLen + idx}`, time: s.time, title: s.title, opt: 'A' });
+    }
+  });
+
+  // Day 2 Option B
+  itineraryData.day2OptionB.forEach((s, idx) => {
+    if (s.placeId === placeId || s.subPlaceId === placeId) {
+      results.push({ dayNum: 2, stepId: `step-timeline-day-2-${commonLen + idx}`, time: s.time, title: s.title, opt: 'B' });
+    }
+  });
+
+  // Day 3
+  itineraryData.day3.forEach((s, idx) => {
+    if (s.placeId === placeId || s.subPlaceId === placeId) {
+      results.push({ dayNum: 3, stepId: `step-timeline-day-3-${idx}`, time: s.time, title: s.title, opt: null });
+    }
+  });
+
+  // Day 4
+  itineraryData.day4.forEach((s, idx) => {
+    if (s.placeId === placeId || s.subPlaceId === placeId) {
+      results.push({ dayNum: 4, stepId: `step-timeline-day-4-${idx}`, time: s.time, title: s.title, opt: null });
+    }
+  });
+
+  return results;
+}
+
+// 상세 페이지에서 특정 4일 동선 항목으로 바로 이동하는 함수
+function goToTimelineStepFromPlace(dayNum, stepId, onsenOpt) {
+  timelineReturnContext = null;
+  updateBackButtonsForTimeline(false);
+
+  const listView = document.getElementById("places-list-view");
+  const detailView = document.getElementById("places-detail-view");
+  if (detailView && listView) {
+    detailView.style.display = "none";
+    listView.style.display = "block";
+  }
+
+  if (onsenOpt && (onsenOpt === 'A' || onsenOpt === 'B') && currentOnsenOption !== onsenOpt) {
+    switchOnsenOption(onsenOpt);
+  }
+
+  switchTab('tab-itinerary');
+  switchDay(dayNum);
+
+  setTimeout(() => {
+    const targetCard = document.getElementById(stepId);
+    if (targetCard) {
+      targetCard.scrollIntoView({ behavior: "smooth", block: "center" });
+      targetCard.classList.add("step-highlight-pulse");
+      setTimeout(() => {
+        targetCard.classList.remove("step-highlight-pulse");
+      }, 2200);
+    }
+  }, 120);
+
+  if (window.location.hash) {
+    history.pushState('', document.title, window.location.pathname + window.location.search);
   }
 }
 
@@ -1475,6 +1647,34 @@ function openPlaceDetail(placeId) {
   if (!detailView || !detailContent) return;
 
   titleText.textContent = place.titleKr;
+
+  const relatedSteps = findTimelineStepsForPlace(placeId);
+  const topReturnBannerHtml = timelineReturnContext ? `
+    <div class="place-return-banner">
+      <button class="btn-place-top-return" onclick="closePlaceDetail()">
+        <span class="return-arrow">‹</span> <b>Day ${timelineReturnContext.dayNum} 일정으로 돌아가기 (방금 보던 위치)</b>
+      </button>
+      <span class="return-hint">💡 내용 확인 후 터치하시면 방금 보던 4일 동선 위치로 즉시 복귀합니다.</span>
+    </div>
+  ` : '';
+
+  const relatedTimelineHtml = (relatedSteps.length > 0) ? `
+    <div class="detail-card itinerary-link-card">
+      <div class="card-title-bar">
+        <h5>🗓️ 4일 동선 내 포함 일정 바로가기</h5>
+      </div>
+      <p class="transit-guide-text" style="margin-bottom: 10px;">이 장소가 포함된 여행 일정 항목으로 즉시 이동하여 전후 동선을 확인할 수 있습니다.</p>
+      <div class="related-steps-list">
+        ${relatedSteps.map(rs => `
+          <button class="btn-related-step" onclick="goToTimelineStepFromPlace(${rs.dayNum}, '${rs.stepId}', '${rs.opt || ''}')">
+            <span class="rs-badge">Day ${rs.dayNum}${rs.opt ? ` (${rs.opt}안)` : ''}</span>
+            <span class="rs-info"><b>${rs.time}</b> · ${rs.title}</span>
+            <span class="rs-arrow">이동 ❯</span>
+          </button>
+        `).join('')}
+      </div>
+    </div>
+  ` : '';
 
   // 갤러리 HTML 생성
   const galleryHtml = (place.images && place.images.length > 0) ? `
@@ -1515,6 +1715,8 @@ function openPlaceDetail(placeId) {
   ` : '';
 
   detailContent.innerHTML = `
+    ${topReturnBannerHtml}
+
     <!-- 상세 페이지 메인 히어로 -->
     <div class="detail-hero-box">
       <div class="detail-category-badge">${place.categoryLabel}</div>
@@ -1578,6 +1780,9 @@ function openPlaceDetail(placeId) {
       </div>
     ` : ''}
 
+    <!-- 4일 동선 일정 바로가기 카드 -->
+    ${relatedTimelineHtml}
+
     <!-- 나고야역(숙소) 출발 이동 안내 & 오디오 카드 -->
     <div class="detail-card transit-action-card">
       <div class="card-title-bar">
@@ -1603,7 +1808,7 @@ function openPlaceDetail(placeId) {
     <!-- 하단 뒤로가기 버튼 -->
     <div class="detail-bottom-back-wrap">
       <button class="btn-back-bottom" onclick="closePlaceDetail()">
-        ${timelineReturnContext ? `‹ ${timelineReturnContext.dayNum}일차 동선으로 돌아가기 (방금 보던 위치)` : '‹ 목록으로 돌아가기'}
+        ${timelineReturnContext ? `‹ Day ${timelineReturnContext.dayNum} 동선으로 돌아가기 (방금 보던 위치)` : '‹ 목록으로 돌아가기'}
       </button>
     </div>
   `;

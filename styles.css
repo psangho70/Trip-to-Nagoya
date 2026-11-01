@@ -2512,3 +2512,126 @@ body.dark-mode .detail-alert-box {
 .btn-back-bottom:active {
   background-color: var(--border-color);
 }
+
+/* ==========================================================================
+   [추가] 4일 동선 <-> 명소·온천 양방향 이동 시인성 강화 스타일
+   ========================================================================== */
+
+.clickable-step-title {
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.clickable-step-title:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.btn-spot-detail-sub {
+  background: linear-gradient(135deg, #2c7a7b, #285e61);
+  box-shadow: 0 2px 4px rgba(44, 122, 123, 0.25);
+}
+
+body.dark-mode .btn-spot-detail-sub {
+  background: linear-gradient(135deg, #285e61, #234e52);
+}
+
+/* 상세 페이지 내 동선 복귀 상단 배너 */
+.place-return-banner {
+  background: linear-gradient(135deg, #ebf8ff, #e6fffa);
+  border: 1.5px solid #63b3ed;
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  box-shadow: var(--shadow-sm);
+}
+
+body.dark-mode .place-return-banner {
+  background: linear-gradient(135deg, #1a365d, #1d4044);
+  border-color: #4299e1;
+}
+
+.btn-place-top-return {
+  background: linear-gradient(135deg, #2b6cb0, #2c5282);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-size: 0.92rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  box-shadow: 0 2px 6px rgba(43, 108, 176, 0.35);
+}
+
+.btn-place-top-return:active {
+  transform: scale(0.98);
+}
+
+/* 상세 페이지 내 4일 동선 관련 일정 바로가기 리스트 */
+.related-steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.btn-related-step {
+  width: 100%;
+  background-color: var(--card-sub-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+  color: var(--text-primary);
+}
+
+.btn-related-step:hover {
+  border-color: var(--primary-color);
+  background-color: var(--primary-light);
+}
+
+.btn-related-step:active {
+  transform: scale(0.99);
+}
+
+.rs-badge {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.rs-info {
+  font-size: 0.84rem;
+  line-height: 1.4;
+  flex: 1;
+  min-width: 0;
+  word-break: keep-all;
+}
+
+.rs-arrow {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--primary-color);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
