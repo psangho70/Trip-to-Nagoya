@@ -1099,6 +1099,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initTheme();
   initFontSize();
   initNoticeModal();
+  initPWAInstall();
   loadChecklist();
   renderItineraries();
   renderTaxiCards();
@@ -2089,4 +2090,251 @@ function showToast(message) {
     toast.classList.remove("show");
   }, 2300);
 }
+
+// ==========================================================================
+// 2.12 스마트 PWA 설치 관리 및 스마트폰 환경별 안내 로직
+// ==========================================================================
+
+let deferredPWAInstallPrompt = null;
+
+// PWA 기기 설치 및 독립형 실행(standalone) 여부 감지
+function isPWAInstalled() {
+  const isStandaloneMatch = window.matchMedia && window.matchMedia('(display-mode: standalone)').matches;
+  const isNavigatorStandalone = window.navigator && window.navigator.standalone === true;
+  const isAndroidIntent = document.referrer && document.referrer.includes('android-app://');
+
+  return Boolean(isStandaloneMatch || isNavigatorStandalone || isAndroidIntent);
+}
+
+// 접속 브라우저 환경 정밀 감지 (안드로이드 크롬, 삼성인터넷, 카카오/네이버 인앱, iOS 사파리 등)
+function detectUserBrowser() {
+  const ua = (navigator.userAgent || '').toLowerCase();
+  
+  if (ua.includes('kakaotalk') || ua.includes('naver') || ua.includes('fban') || ua.includes('fbav') || ua.includes('line')) {
+    return 'inapp';
+  }
+  if (ua.includes('samsungbrowser')) {
+    return 'samsung';
+  }
+  if (/iphone|ipad|ipod/.test(ua) && !ua.includes('crios') && !ua.includes('fxios')) {
+    return 'ios';
+  }
+  if (ua.includes('chrome') || ua.includes('crios')) {
+    return 'chrome';
+  }
+  return 'other';
+}
+
+// PWA 초기화
+function initPWAInstall() {
+  // 1. 서비스 워커 등록
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js')
+      .then(reg => {
+        console.log('[PWA] Service Worker 등록 완료:', reg.scope);
+      })
+      .catch(err => {
+        console.warn('[PWA] Service Worker 등록 실패:', err);
+      });
+  }
+
+  // 2. 현재 상태가 이미 단독 실행 앱(Standalone PWA)인지 확인
+  if (isPWAInstalled()) {
+    updatePWAHeaderStatus(true);
+    const banner = document.getElementById('pwa-install-banner');
+    if (banner) banner.style.display = 'none';
+    return;
+  }
+
+  // 3. beforeinstallprompt 이벤트 가로채기 (크롬 등 자동 설치 프롬프트 지원 브라우저)
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPWAInstallPrompt = e;
+    console.log('[PWA] beforeinstallprompt 이벤트 캡처 완료');
+
+    updatePWAHeaderStatus(false, true);
+    checkAndShowPWABanner();
+  });
+
+  // 4. 앱 설치 완료 이벤트 수신
+  window.addEventListener('appinstalled', () => {
+    console.log('[PWA] 앱 설치 완료');
+    deferredPWAInstallPrompt = null;
+    localStorage.setItem('nagoya_pwa_installed', 'true');
+    updatePWAHeaderStatus(true);
+    closePWABanner(false);
+    showToast('🎉 나고야 여행 앱이 홈 화면에 성공적으로 설치되었습니다!');
+  });
+
+  // 5. 프롬프트 이벤트가 늦게 오거나 미지원 브라우저(삼성인터넷, 인앱 등) 대비 초기 배너 검사
+  setTimeout(() => {
+    if (!isPWAInstalled()) {
+      checkAndShowPWABanner();
+    }
+  }, 1200);
+}
+
+// 상단 헤더의 [앱 설치] / [앱 실행중] 버튼 상태 업데이트
+function updatePWAHeaderStatus(isInstalled, canPrompt = false) {
+  const btn = document.getElementById('pwa-header-btn');
+  if (!btn) return;
+
+  if (isInstalled) {
+    btn.innerHTML = '<span class="btn-icon">✅</span><span class="btn-text">앱 실행중</span>';
+    btn.classList.add('pwa-installed-badge');
+    btn.title = '나고야 여행 전용 앱(PWA)으로 원활하게 실행 중입니다.';
+  } else {
+    btn.innerHTML = '<span class="btn-icon">📲</span><span class="btn-text">앱 설치</span>';
+    btn.classList.remove('pwa-installed-badge');
+    btn.title = canPrompt ? '클릭 시 스마트폰 홈 화면에 바로 앱으로 설치합니다.' : '스마트폰 홈 화면에 앱 설치 안내';
+  }
+}
+
+// 상단 스마트 설치 배너 표시 여부 결정
+function checkAndShowPWABanner() {
+  if (isPWAInstalled()) return;
+
+  const todayStr = new Date().toISOString().split('T')[0];
+  const hideDate = localStorage.getItem('nagoya_pwa_banner_hide');
+  if (hideDate === todayStr) return; // 오늘 하루 안 보기
+
+  const banner = document.getElementById('pwa-install-banner');
+  if (banner) {
+    banner.style.display = 'flex';
+  }
+}
+
+// 앱 설치 트리거 (헤더 버튼 또는 배너의 설치 버튼 클릭 시)
+function triggerPWAInstall() {
+  if (isPWAInstalled()) {
+    showToast('이미 나고야 여행 전용 앱(PWA) 모드로 원활하게 실행 중입니다! 👍');
+    return;
+  }
+
+  // 1. 크롬 원클릭 네이티브 설치 프롬프트가 준비된 경우
+  if (deferredPWAInstallPrompt) {
+    executePWAInstallPrompt();
+  } else {
+    // 2. 미지원 브라우저(삼성인터넷, 인앱브라우저, iOS 사파리 등)이거나 프롬프트 대기 중일 때는 맞춤 안내 모달 오픈
+    openInstallGuideModal();
+  }
+}
+
+// 네이티브 설치 프롬프트 직접 호출
+function executePWAInstallPrompt() {
+  if (!deferredPWAInstallPrompt) {
+    openInstallGuideModal();
+    return;
+  }
+
+  deferredPWAInstallPrompt.prompt();
+  deferredPWAInstallPrompt.userChoice.then((choiceResult) => {
+    if (choiceResult && choiceResult.outcome === 'accepted') {
+      console.log('[PWA] 사용자가 앱 설치를 승인했습니다.');
+      localStorage.setItem('nagoya_pwa_installed', 'true');
+      updatePWAHeaderStatus(true);
+      closePWABanner(false);
+      closeInstallGuideModal();
+    } else {
+      console.log('[PWA] 사용자가 앱 설치를 취소했습니다.');
+      showToast('앱 설치가 취소되었습니다. 필요 시 언제든 다시 설치하실 수 있습니다.');
+    }
+    deferredPWAInstallPrompt = null;
+  });
+}
+
+// 브라우저별 3단계 설치 안내 모달 열기
+function openInstallGuideModal() {
+  const modal = document.getElementById('pwa-install-modal');
+  if (!modal) return;
+
+  const browserType = detectUserBrowser();
+  const detectedBar = document.getElementById('pwa-detected-browser');
+  const detectedText = document.getElementById('pwa-detected-text');
+  const installActionBtn = document.getElementById('btn-modal-install-action');
+
+  // 감지된 브라우저 텍스트 및 UI 조정
+  if (detectedBar && detectedText) {
+    if (browserType === 'inapp') {
+      detectedText.innerHTML = '⚠️ <strong>카카오톡/네이버 인앱 브라우저</strong>로 접속 중입니다. (Chrome으로 열기 필요)';
+      detectedBar.style.borderColor = 'var(--danger-color, #e53e3e)';
+      detectedBar.style.backgroundColor = 'rgba(229, 62, 62, 0.08)';
+    } else if (browserType === 'samsung') {
+      detectedText.innerHTML = '🔍 <strong>삼성 인터넷(Samsung Internet)</strong> 환경이 감지되었습니다. (아래 3초 간편 설치)';
+      detectedBar.style.borderColor = 'var(--primary-color, #1a73e8)';
+      detectedBar.style.backgroundColor = 'rgba(26, 115, 232, 0.08)';
+    } else if (browserType === 'ios') {
+      detectedText.innerHTML = '🍎 <strong>아이폰/아이패드 Safari</strong> 환경이 감지되었습니다. (홈 화면에 추가)';
+      detectedBar.style.borderColor = '#10b981';
+      detectedBar.style.backgroundColor = 'rgba(16, 185, 129, 0.08)';
+    } else {
+      detectedText.innerHTML = '📱 <strong>모바일 Chrome 브라우저</strong> 환경이 감지되었습니다. (원클릭 설치 지원)';
+      detectedBar.style.borderColor = 'var(--primary-color, #1a73e8)';
+      detectedBar.style.backgroundColor = 'rgba(26, 115, 232, 0.08)';
+    }
+  }
+
+  // 모달 내 원클릭 설치 버튼 표시 여부
+  if (installActionBtn) {
+    if (deferredPWAInstallPrompt) {
+      installActionBtn.style.display = 'inline-flex';
+      installActionBtn.innerHTML = '<span>⚡ 화면에 원클릭 바로 설치 창 띄우기</span>';
+    } else {
+      installActionBtn.style.display = 'none';
+    }
+  }
+
+  // 가이드 카드 하이라이트
+  document.querySelectorAll('.pwa-guide-card').forEach(card => card.classList.remove('active-target'));
+  const targetGuideId = browserType === 'samsung' ? 'guide-samsung'
+    : browserType === 'inapp' ? 'guide-inapp'
+    : browserType === 'ios' ? 'guide-ios'
+    : 'guide-chrome';
+
+  const targetCard = document.getElementById(targetGuideId);
+  if (targetCard) {
+    targetCard.classList.add('active-target');
+    const parent = targetCard.parentElement;
+    if (parent && parent.firstChild !== targetCard) {
+      parent.insertBefore(targetCard, parent.firstChild);
+    }
+  }
+
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+// 설치 안내 모달 닫기
+function closeInstallGuideModal() {
+  const modal = document.getElementById('pwa-install-modal');
+  if (modal) {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+}
+
+// 상단 스마트 설치 배너 닫기
+function closePWABanner(dontShowToday = false) {
+  const banner = document.getElementById('pwa-install-banner');
+  if (banner) {
+    banner.style.display = 'none';
+  }
+
+  if (dontShowToday) {
+    const todayStr = new Date().toISOString().split('T')[0];
+    localStorage.setItem('nagoya_pwa_banner_hide', todayStr);
+    showToast('앱 설치 배너를 오늘 하루 동안 보지 않습니다.');
+  }
+}
+
+// 전역 window 함수 바인딩 (인라인 HTML onclick 완벽 지원)
+window.initPWAInstall = initPWAInstall;
+window.isPWAInstalled = isPWAInstalled;
+window.detectUserBrowser = detectUserBrowser;
+window.triggerPWAInstall = triggerPWAInstall;
+window.executePWAInstallPrompt = executePWAInstallPrompt;
+window.openInstallGuideModal = openInstallGuideModal;
+window.closeInstallGuideModal = closeInstallGuideModal;
+window.closePWABanner = closePWABanner;
+
 

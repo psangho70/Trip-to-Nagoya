@@ -37,6 +37,10 @@
         <p class="trip-date">2026.12.26(토) ~ 12.29(화) · 3박 4일</p>
       </div>
       <div class="header-actions">
+        <button id="pwa-header-btn" class="icon-btn pwa-header-btn" title="스마트폰에 앱으로 설치하기" onclick="triggerPWAInstall()">
+          <span class="btn-icon">📲</span>
+          <span class="btn-text">앱 설치</span>
+        </button>
         <button id="notice-btn" class="icon-btn notice-btn" title="여행 필수 주의사항 확인" onclick="openNoticeModal()">
           <span class="btn-icon">⚠️</span>
           <span class="btn-text">주의사항</span>
@@ -54,6 +58,29 @@
 
   <!-- 메인 컨테이너 -->
   <main class="main-container">
+
+    <!-- PWA 앱 설치 안내 스마트 배너 (스마트폰 미설치 상태일 때 노출) -->
+    <div id="pwa-install-banner" class="pwa-install-banner" style="display: none;">
+      <div class="pwa-banner-main">
+        <img src="images/icons/icon-96x96.png" alt="앱 아이콘" class="pwa-banner-thumb">
+        <div class="pwa-banner-text">
+          <div class="pwa-banner-title">
+            <strong>나고야 가족여행 앱 설치</strong>
+            <span class="pwa-badge">원클릭 PWA</span>
+          </div>
+          <p class="pwa-banner-desc">스마트폰 홈화면에 앱으로 추가하면 데이터 걱정 없이 더 빠르고 편하게 열람할 수 있습니다.</p>
+        </div>
+      </div>
+      <div class="pwa-banner-actions">
+        <button id="btn-pwa-quick-install" class="btn-pwa-install" onclick="triggerPWAInstall()">
+          <span>📲 지금 앱 설치</span>
+        </button>
+        <button class="btn-pwa-guide" onclick="openInstallGuideModal()" title="브라우저별 상세 설치 방법">
+          <span>설치 방법 ❓</span>
+        </button>
+        <button class="btn-pwa-close" onclick="closePWABanner(true)" title="오늘 하루 닫기">✕</button>
+      </div>
+    </div>
 
     <!-- [탭 1] 홈 / 바우처 (tab-home) -->
     <section id="tab-home" class="tab-content active">
@@ -619,6 +646,88 @@
       <div class="modal-footer">
         <span class="modal-tip">💡 손가락 두 개로 핀치 줌하여 확대 확인하실 수 있습니다.</span>
         <button class="btn-subtle" onclick="closeImageModal()">닫기</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PWA 앱 설치 상세 안내 모달 팝업 -->
+  <div id="pwa-install-modal" class="modal-overlay" onclick="closeInstallGuideModal()">
+    <div class="modal-content pwa-modal-content" onclick="event.stopPropagation()">
+      <div class="modal-header pwa-modal-header">
+        <h4><span class="modal-icon">📲</span> 스마트폰 앱 설치 안내</h4>
+        <button class="modal-close-btn" onclick="closeInstallGuideModal()">✕</button>
+      </div>
+      <div class="modal-body pwa-modal-body">
+        <!-- 앱 아이콘 미리보기 -->
+        <div class="pwa-preview-box">
+          <img src="images/icons/icon-96x96.png" alt="가족여행 앱 아이콘" class="pwa-preview-icon">
+          <div class="pwa-preview-info">
+            <strong>나고야 가족여행</strong>
+            <p>설치 시 스마트폰 바탕화면에 위 아이콘의 단독 앱으로 등록됩니다.</p>
+          </div>
+        </div>
+
+        <!-- 감지된 브라우저 상태 배너 -->
+        <div id="pwa-detected-browser" class="pwa-detected-bar">
+          <span class="detect-icon">🔍</span>
+          <span id="pwa-detected-text">현재 브라우저를 확인 중입니다...</span>
+        </div>
+
+        <!-- 브라우저별 설치 가이드 카드 리스트 -->
+        <div class="pwa-guides-list">
+          <!-- 1. 크롬 가이드 -->
+          <div class="pwa-guide-card" id="guide-chrome">
+            <div class="guide-card-header">
+              <span class="browser-badge chrome">구글 크롬 (Chrome)</span>
+              <span class="guide-step-tag">추천</span>
+            </div>
+            <ol class="guide-steps">
+              <li>화면 우측 상단의 <b>메뉴 버튼 (⋮)</b>을 터치합니다.</li>
+              <li>메뉴 목록에서 <b>[앱 설치]</b> 또는 <b>[홈 화면에 추가]</b>를 선택합니다.</li>
+              <li>안내 팝업에서 <b>[설치]</b>를 누르면 홈 화면에 바로 추가됩니다.</li>
+            </ol>
+          </div>
+
+          <!-- 2. 삼성 인터넷 가이드 -->
+          <div class="pwa-guide-card" id="guide-samsung">
+            <div class="guide-card-header">
+              <span class="browser-badge samsung">삼성 인터넷 (Samsung Internet)</span>
+            </div>
+            <ol class="guide-steps">
+              <li>화면 우측 하단의 <b>메뉴 버튼 (≡)</b>을 터치합니다.</li>
+              <li><b>[현재 페이지 추가 (+)]</b> 메뉴를 선택합니다.</li>
+              <li>옵션 중 <b>[홈 화면]</b>을 선택하고 추가를 누릅니다.</li>
+            </ol>
+          </div>
+
+          <!-- 3. 카카오톡/네이버 인앱 브라우저 경고 -->
+          <div class="pwa-guide-card warning-card" id="guide-inapp">
+            <div class="guide-card-header">
+              <span class="browser-badge inapp">⚠️ 카카오톡 / 네이버 인앱 브라우저</span>
+            </div>
+            <p class="guide-inapp-desc">
+              카카오톡이나 SNS 내부 창에서는 앱 설치 기능이 제한됩니다. 우측 상단 <b>점 3개 (⋮)</b>를 누른 후 <b>[다른 브라우저로 열기 (Chrome 등)]</b>를 선택하여 접속해 주세요.
+            </p>
+          </div>
+
+          <!-- 4. 아이폰 Safari 가이드 -->
+          <div class="pwa-guide-card" id="guide-ios">
+            <div class="guide-card-header">
+              <span class="browser-badge safari">아이폰 사파리 (Safari)</span>
+            </div>
+            <ol class="guide-steps">
+              <li>사파리 하단 중앙의 <b>공유 버튼 (네모 위 화살표 ⎋)</b>을 터치합니다.</li>
+              <li>메뉴를 아래로 내려 <b>[홈 화면에 추가]</b>를 선택합니다.</li>
+              <li>우측 상단의 <b>[추가]</b>를 누르면 홈 화면에 앱이 설치됩니다.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer pwa-modal-footer">
+        <button id="btn-modal-install-action" class="btn-primary btn-pwa-modal-install" onclick="executePWAInstallPrompt()">
+          <span>📲 지금 바로 원클릭 설치 시도</span>
+        </button>
+        <button class="btn-subtle" onclick="closeInstallGuideModal()">닫기</button>
       </div>
     </div>
   </div>

@@ -3,7 +3,7 @@
  * 오프라인 캐싱 및 PWA 설치 지원
  */
 
-const CACHE_NAME = 'nagoya-trip-v1';
+const CACHE_NAME = 'nagoya-trip-v2';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
@@ -18,11 +18,17 @@ const ASSETS_TO_CACHE = [
   './images/icons/icon-maskable-512.png'
 ];
 
-// 1. 서비스 워커 설치: 기본 핵심 에셋 사전 캐싱
+// 1. 서비스 워커 설치: 개별 안전 캐싱 (단일 파일 실패 시에도 전체 설치 성공 보장)
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(ASSETS_TO_CACHE);
+    caches.open(CACHE_NAME).then(async (cache) => {
+      for (const asset of ASSETS_TO_CACHE) {
+        try {
+          await cache.add(asset);
+        } catch (err) {
+          console.warn('[SW] Cache item failed (non-critical):', asset, err);
+        }
+      }
     }).then(() => self.skipWaiting())
   );
 });
@@ -42,9 +48,13 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-// 3. 네트워크 요청 처리: Network First (실시간 최신 우선), 실패 시 캐시 반환 (오프라인 안전망)
+// 3. 네트워크 요청 처리: Network First (최신 데이터 우선), 실패 시 캐시 반환 (오프라인 안전망)
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
+
+  const url = new URL(event.request.url);
+  // 외부 API나 도메인이 다르면 패스
+  if (url.origin !== self.location.origin) return;
 
   event.respondWith(
     fetch(event.request)

@@ -2635,3 +2635,348 @@ body.dark-mode .place-return-banner {
   flex-shrink: 0;
 }
 
+/* ==========================================================================
+   [신규] PWA 스마트폰 앱 설치 여부 확인 및 설치 안내 전용 스타일
+   ========================================================================== */
+
+/* 1. 상단 헤더 PWA 앱 설치 버튼 및 앱 모드 뱃지 */
+.pwa-header-btn {
+  background: linear-gradient(135deg, #2b6cb0, #2c5282) !important;
+  color: #ffffff !important;
+  border: 1px solid #63b3ed !important;
+  box-shadow: 0 2px 4px rgba(43, 108, 176, 0.3);
+}
+
+.pwa-header-btn:hover {
+  background: linear-gradient(135deg, #3182ce, #2b6cb0) !important;
+  transform: translateY(-1px);
+}
+
+.pwa-installed-badge {
+  background: #276749 !important;
+  color: #c6f6d5 !important;
+  border: 1px solid #48bb78 !important;
+  pointer-events: none;
+}
+
+body.dark-mode .pwa-installed-badge {
+  background: #1c4532 !important;
+  color: #9ae6b4 !important;
+}
+
+/* 2. 메인 컨테이너 상단 PWA 설치 스마트 배너 */
+.pwa-install-banner {
+  background: linear-gradient(135deg, #ebf8ff, #edf2f7);
+  border: 1.5px solid #bee3f8;
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: var(--shadow-sm);
+  animation: slideInDown 0.3s ease-out;
+}
+
+@keyframes slideInDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+body.dark-mode .pwa-install-banner {
+  background: linear-gradient(135deg, #1a2a44, #242c3d);
+  border-color: #2b5b84;
+}
+
+.pwa-banner-main {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pwa-banner-thumb {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  flex-shrink: 0;
+  object-fit: cover;
+  border: 2px solid #ffffff;
+}
+
+body.dark-mode .pwa-banner-thumb {
+  border-color: #4a5568;
+}
+
+.pwa-banner-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.pwa-banner-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 3px;
+  flex-wrap: wrap;
+}
+
+.pwa-banner-title strong {
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+.pwa-badge {
+  font-size: 0.68rem;
+  font-weight: 800;
+  background-color: var(--primary-color);
+  color: #ffffff;
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+.pwa-banner-desc {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.35;
+  margin: 0;
+  word-break: keep-all;
+}
+
+.pwa-banner-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-pwa-install {
+  flex: 1;
+  background: linear-gradient(135deg, #3182ce, #2b6cb0);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  font-size: 0.86rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(49, 130, 206, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  transition: all 0.2s ease;
+}
+
+.btn-pwa-install:active {
+  transform: scale(0.97);
+}
+
+.btn-pwa-guide {
+  background-color: var(--card-sub-bg);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-pwa-close {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  line-height: 1;
+}
+
+/* 3. PWA 설치 상세 안내 모달 */
+.pwa-modal-content {
+  max-width: 520px;
+}
+
+.pwa-modal-header {
+  background-color: #ebf8ff;
+  border-bottom: 1px solid #bee3f8;
+}
+
+body.dark-mode .pwa-modal-header {
+  background-color: #1a365d;
+  border-bottom: 1px solid #2b6cb0;
+}
+
+.pwa-modal-header h4 {
+  color: #2b6cb0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+body.dark-mode .pwa-modal-header h4 {
+  color: #90cdf4;
+}
+
+.pwa-modal-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-height: 72vh;
+  overflow-y: auto;
+}
+
+.pwa-preview-box {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background-color: var(--card-sub-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+}
+
+.pwa-preview-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+  flex-shrink: 0;
+}
+
+.pwa-preview-info strong {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.pwa-preview-info p {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.pwa-detected-bar {
+  background-color: #feebc8;
+  border: 1px solid #fbd38d;
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  font-size: 0.82rem;
+  color: #7b341e;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+body.dark-mode .pwa-detected-bar {
+  background-color: #3d2c18;
+  border-color: #744210;
+  color: #fbd38d;
+}
+
+.pwa-guides-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pwa-guide-card {
+  background-color: var(--card-sub-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  transition: all 0.2s ease;
+}
+
+.pwa-guide-card.highlighted {
+  border: 2px solid var(--primary-color);
+  background-color: var(--primary-light);
+}
+
+.guide-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.browser-badge {
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.browser-badge.chrome {
+  background-color: #bee3f8;
+  color: #2b6cb0;
+}
+
+.browser-badge.samsung {
+  background-color: #c6f6d5;
+  color: #22543d;
+}
+
+.browser-badge.safari {
+  background-color: #e2e8f0;
+  color: #2d3748;
+}
+
+.browser-badge.inapp {
+  background-color: #fed7d7;
+  color: #9b2c2c;
+}
+
+.guide-step-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  background-color: #ecc94b;
+  color: #1a202c;
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+.guide-steps {
+  margin: 0;
+  padding-left: 20px;
+  font-size: 0.82rem;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+.guide-steps li {
+  margin-bottom: 3px;
+}
+
+.guide-inapp-desc {
+  font-size: 0.82rem;
+  color: #c53030;
+  line-height: 1.5;
+  margin: 0;
+}
+
+body.dark-mode .guide-inapp-desc {
+  color: #feb2b2;
+}
+
+.pwa-modal-footer {
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-pwa-modal-install {
+  flex: 1;
+  padding: 10px 14px;
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+

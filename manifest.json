@@ -2,13 +2,16 @@
   "name": "나고야 3박 4일 가족 여행 가이드",
   "short_name": "나고야 가족여행",
   "description": "성인 4인 가족을 위한 피로 최소화 나고야 3박 4일 명소, 온천, 택시 카드, 미식 여행 가이드",
-  "id": "trip-to-nagoya",
+  "id": "trip-to-nagoya-pwa",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait-primary",
   "background_color": "#f7fafc",
   "theme_color": "#2b6cb0",
+  "lang": "ko",
+  "prefer_related_applications": false,
+  "categories": ["travel", "utilities"],
   "icons": [
     {
       "src": "images/icons/favicon-16x16.png",
@@ -58,6 +61,29 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "4일 동선 타임라인",
+      "short_name": "4일 동선",
+      "description": "일자별 최적 이동 동선 및 일정",
+      "url": "./index.html#tab-itinerary",
+      "icons": [{ "src": "images/icons/icon-96x96.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "일본어 택시 카드",
+      "short_name": "택시 카드",
+      "description": "기사님께 보여주는 일본어 목적지 카드",
+      "url": "./index.html#tab-taxi",
+      "icons": [{ "src": "images/icons/icon-96x96.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "명소 & 온천 사전",
+      "short_name": "명소·온천",
+      "description": "현장 사진 갤러리 및 상세 가이드",
+      "url": "./index.html#tab-places",
+      "icons": [{ "src": "images/icons/icon-96x96.png", "sizes": "96x96" }]
     }
   ]
 }
