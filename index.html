@@ -6,6 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>나고야 3박 4일 여행 가이드 | 12.26 - 12.29</title>
   <meta name="description" content="성인 4인을 위한 피로 최소화 나고야 3박 4일 명소, 온천, 쇼핑, 미식 여행 계획서">
+  
+  <!-- PWA & 모바일 앱 아이콘 설정 -->
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/icons/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#2b6cb0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="나고야 가족여행">
+  <meta name="application-name" content="나고야 가족여행">
+  
   <link rel="stylesheet" href="styles.css">
   <!-- 폰트 및 아이콘 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -615,6 +627,18 @@
   <div id="toast" class="toast">알림 메시지</div>
 
   <script src="app.js"></script>
+  <!-- PWA Service Worker 등록 -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js').then((reg) => {
+          console.log('PWA Service Worker registered successfully:', reg.scope);
+        }).catch((err) => {
+          console.log('Service Worker registration failed:', err);
+        });
+      });
+    }
+  </script>
 </body>
 
 </html>
